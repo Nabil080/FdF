@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/23 23:44:06 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/24 00:39:01 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	exit_failure(void);
 void	exit_free(void *data);
 
 void	exit_free_all(t_data *data);
+
+void	exit_arguments(void);
 /*
 * handler
 */
