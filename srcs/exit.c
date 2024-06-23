@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/23 23:36:52 by nbellila         ###   ########.fr       */
+/*   Created: 2024/06/23 23:31:04 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/23 23:34:15 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "fdf.h"
 
-# include <mlx.h>
-
-# include "libft.h"
-
-/*
-* colors
-*/
-# define GREEN 0x0000FF00
-
-typedef	struct s_data
+void	exit_failure(void)
 {
-	void	*mlx;
-	void	*window;
-}			t_data;
-/*
-* exit
-*/
-void	exit_failure(void);
+	exit(EXIT_FAILURE);
+}
 
-void	exit_free(void *data);
-/*
-* handler
-*/
-int	handle_mouse(int button, int x, int y, void *param);
-
-int	handle_input(int key, void *param);
-
-#endif
+void	exit_free(void *data)
+{
+	free(data);
+	exit_failure();
+}

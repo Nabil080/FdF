@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 22:26:19 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/23 23:35:11 by nbellila         ###   ########.fr       */
+/*   Created: 2024/06/23 23:31:44 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/23 23:36:10 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_data	*init(void)
+int	handle_mouse(int button, int x, int y, void *param)
 {
 	t_data	*data;
 
-	data = malloc(sizeof(t_data));
-	if (!data)
-		exit_failure();
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		exit_free(data);
-	data->window = mlx_new_window(data->mlx, 1000, 1000, "Filu de Feru");
-	mlx_key_hook(data->window, handle_input, data);
-	mlx_mouse_hook(data->window, handle_mouse, data);
-	mlx_loop(data->mlx);
-	return (data);
+	data = param;
+	ft_printf("button : %d, x : %d, y : %d\n", button, x, y);
+	mlx_pixel_put(data->mlx, data->window, x, y, GREEN);
+	return (1);
 }
 
-int	main(void)
+int	handle_input(int key, void *param)
 {
-	t_data	*data;
-
-	data = init();
-	return (0);
+	ft_printf("key : %d\n", key);
+	(void)*param;
+	return (1);
 }
