@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 23:31:04 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/23 23:44:07 by nbellila         ###   ########.fr       */
+/*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/23 23:42:24 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef DEFINES_H
+# define DEFINES_H
 
-void	exit_failure(void)
-{
-	exit(EXIT_FAILURE);
-}
+/*
+* keys
+*/
+# define Q 113
+# define ESC 65307
+/*
+* colors
+*/
+# define GREEN 0x0000FF00
 
-void	exit_free(void *data)
-{
-	free(data);
-	exit_failure();
-}
-
-void	exit_free_all(t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->window);
-	free(data->mlx);
-	exit_free(data);
-}
+#endif
