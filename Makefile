@@ -17,7 +17,9 @@ INCLUDES =	includes \
 
 ######################## SOURCES ########################
 
-SRCS_NAMES =	main.c 
+SRCS_NAMES =	main.c \
+				handler.c \
+				exit.c
 
 SRCS_DIR = srcs/
 
@@ -58,3 +60,8 @@ ${OBJS_DIR} :
 
 ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
 	${CC} ${FLAGS} ${CPPFLAGS} ${foreach include, ${INCLUDES},-I ${include}} -c $< -o $@
+	
+######################## TEST ########################
+
+test : all
+	./${NAME}
