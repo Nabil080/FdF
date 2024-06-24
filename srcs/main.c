@@ -6,15 +6,17 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:26:19 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/24 00:44:27 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/24 23:24:38 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_data	*init(void)
+static t_data	*init(t_map *map)
 {
 	t_data	*data;
+	size_t	width;
+	size_t	height;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
@@ -22,56 +24,26 @@ static t_data	*init(void)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit_free(data);
-	data->window = mlx_new_window(data->mlx, 1000, 1000, "Filu de Feru");
+	data->map = map;
+	width = map->width * 30;
+	height = map->height * 30;
+	data->window = mlx_new_window(data->mlx, width, height, "Filu de Feru");
 	mlx_key_hook(data->window, handle_input, data);
 	mlx_mouse_hook(data->window, handle_mouse, data);
 	return (data);
 }
 
-static void	get_map(t_list **map, char **argv)
-{
-	int		fd;
-	char	*line;
-	size_t	width;
-	size_t	height;
-	t_list	*new;
-
-	*map = malloc(sizeof(t_list));
-	if (!*map)
-		exit_failure();
-	*map = NULL;
-	fd = open(argv[1], O_RDONLY);
-	line = get_next_line(fd);
-	width = ft_strlen(line);
-	height = 0;
-	while (line)
-	{
-		height++;
-		if (ft_strlen(line) != width)
-			exit_failure();
-		new = ft_lstnew(line);
-		if (!new)
-			exit_failure();
-		ft_lstadd_back(map, new);
-		line = get_next_line(fd);
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	*data;
-	t_list	*map;
+	t_map	*map;
+	int		fd;
 
-	if (argc != 2)
-		exit_arguments();
-	map = NULL;
-	get_map(&map, argv);
-	while (map)
-	{
-		ft_printf("%s", ft_lsttos(map));
-		map = map->next;
-	}
-	data = init();
+	check_args(argc, argv);
+	fd = open(argv[1], O_RDONLY);
+	map = get_map(fd);
+	data = init(map);
+	show_map(map);
 	mlx_loop(data->mlx);
 	return (0);
 }

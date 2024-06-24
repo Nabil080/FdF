@@ -19,6 +19,7 @@ INCLUDES =	includes \
 
 SRCS_NAMES =	main.c \
 				handler.c \
+				parsing.c \
 				exit.c
 
 SRCS_DIR = srcs/
