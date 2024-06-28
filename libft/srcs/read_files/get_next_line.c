@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:07:00 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/24 19:55:56 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:52:54 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,9 @@ int	clean_lst(t_list **lst)
 	current->content = clean;
 	*lst = current;
 	return (1);
+}
+
+void __attribute__((destructor))	test(void)
+{
+	get_next_line(-42);
 }

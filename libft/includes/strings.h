@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:20:11 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/22 15:57:25 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:32:33 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 
 char	**ft_split(char const *s, char c);
 
-void	*free_tab(char **tab, size_t size);
+void	*free_2d(void **tab, size_t size);
 
 size_t	ft_countwords(char const *s, char c);
 

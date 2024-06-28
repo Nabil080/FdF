@@ -18,9 +18,8 @@ INCLUDES =	includes \
 ######################## SOURCES ########################
 
 SRCS_NAMES =	main.c \
-				handler.c \
-				parsing.c \
-				exit.c
+				exit.c \
+				parsing.c
 
 SRCS_DIR = srcs/
 
@@ -49,12 +48,16 @@ norm :
 	${foreach lib, ${LIBS}, ${MAKE} norm -C ${lib}}
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine ${INCLUDES}
-	
+
 ######################## COMPILATION ########################
 
 ${NAME} : ${OBJS_DIR} ${OBJS}
 	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
 	${CC} ${FLAGS} ${OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o $@ ${LINKFLAGS}
+
+debug : ${OBJS_DIR} ${OBJS}
+	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
+	${CC} ${FLAGS} -g3 -fsanitize=address ${OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o ${NAME} ${LINKFLAGS}
 
 ${OBJS_DIR} :
 	mkdir $@
@@ -66,3 +69,7 @@ ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
 
 test : all
 	./${NAME} 42.fdf
+
+error : all
+	./${NAME} invalid.fdf
+
