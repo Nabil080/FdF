@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:12:14 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/24 21:15:07 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:45:49 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,16 @@ size_t	ft_countwords(char const *s, char c)
 	return (count);
 }
 
-void	*free_tab(char **tab, size_t size)
+void	*free_2d(void **tab, size_t size)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < size)
-		free(tab[size]);
+	{
+		free(tab[i]);
+		i++;
+	}
 	free(tab);
 	return (NULL);
 }
@@ -63,7 +66,7 @@ char	**ft_split(char const *s, char c)
 			break ;
 		tab[col] = ft_substr(s, start, i - start);
 		if (!tab[col])
-			return (free_tab(tab, col));
+			return (free_2d((void **)tab, col));
 		col++;
 	}
 	tab[col] = 0;
