@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_putlst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/29 19:09:38 by nbellila         ###   ########.fr       */
+/*   Created: 2024/06/29 19:11:10 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/29 19:25:16 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include <mlx.h>
-# include "libft.h"
-# include "defines.h"
-
-/*structs*/
-typedef struct s_map{
-	size_t	height;
-	size_t	width;
-	int		**tab;
-}t_map;
-/*parsing*/
-void	check_args(int argc, char **argv);
-
-t_map	*get_map(char *file);
-/*exit*/
-void	exit_args(void);
-
-#endif
+void	ft_putlst(t_list *lst)
+{
+	while (lst)
+	{
+		ft_putstr_fd(lst->content, 1);
+		lst = lst->next;
+	}
+}

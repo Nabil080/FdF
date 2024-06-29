@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:31:43 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/22 18:06:46 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/29 19:19:01 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int		ft_lstcontains(t_list *lst, char c);
 size_t	ft_lststrlen(t_list *lst);
 
 int		ft_strcontains(char *str, char c);
+
+t_list	*get_lines(char *filename);
 
 #endif

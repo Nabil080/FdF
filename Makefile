@@ -71,5 +71,5 @@ test : all
 	./${NAME} 42.fdf
 
 error : all
-	./${NAME} invalid.fdf
+	./${NAME} 42.fdf
 
