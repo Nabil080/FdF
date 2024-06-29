@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/29 19:25:30 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/29 19:41:53 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,28 @@ void	check_args(int argc, char **argv)
 		exit_args();
 	close (fd);
 }
+static t_map	*get_size(t_list *lines)
+{
+	t_map	*map;
+	size_t	width;
+	size_t	height;
 
+	width = ft_strlen(lines->content);
+	height = 0;
+	while (lines)
+	{
+		if (width != ft_strlen(lines->content))
+			return (NULL);
+		height++;
+		lines = lines->next;
+	}
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return (NULL);
+	map->height = height;
+	map->width = width;
+	return (map);
+}
 t_map	*get_map(char *file)
 {
 	t_map	*map;
@@ -36,15 +57,18 @@ t_map	*get_map(char *file)
 	// recupere les lignes en liste chainee
 	lines = get_lines(file);
 	if (!lines)
-		return (NULL);
+		exit_malloc();
+	// verifie que la map est valide
+	map = get_size(lines);
+	// sinon free lines et return
+	if (!map)
+	{
+		ft_lstclear(&lines, free);
+		exit_args();
+	}
 	ft_putlst(lines);
-	// todo : verifie que la map est valide
-	// if (!check_map(lines));
-		// todo : sinon free lines et return
-			// return (ft_lstclear(&lines, free))
-	map = malloc(sizeof(map));
 	// todo : get map data (height, width, int**)
-	// lst_to_map(lines);
+	// map = lst_to_map(lines);
 	ft_lstclear(&lines, free);
 	return (map);
 }
