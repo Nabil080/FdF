@@ -23,6 +23,7 @@ PRINTERS =	ft_putchar_fd.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
 			ft_putnbr_base.c \
+			ft_putlst.c \
 			ft_printf.c
 
 STRINGS =	ft_strlen.c \
@@ -62,7 +63,8 @@ CONVERTERS =	ft_itoa.c \
 				ft_tolower.c
 
 READ_FILES =	get_next_line.c \
-				get_next_line_utils.c
+				get_next_line_utils.c \
+				get_lines.c
 
 LINKED_LISTS =	ft_lstnew.c \
 				ft_lstadd_front.c \
