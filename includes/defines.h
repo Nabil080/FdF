@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 04:29:12 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 05:52:23 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,28 @@
 # define ESC 65307
 /*colors*/
 # define GREEN 0x0000FF00
+
+/*structs*/
+typedef struct s_map{
+	size_t	height;
+	size_t	width;
+	int		**tab;
+}t_map;
+
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}t_img;
+typedef struct t_data{
+	t_map	*map;
+	void	*mlx;
+	void	*win;
+	t_img	*img;
+	void	*adr;
+}t_data;
+
 
 #endif
