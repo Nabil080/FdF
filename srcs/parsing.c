@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 04:09:19 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 04:36:32 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_map	*get_map(char *file)
 	map = NULL;
 	lines = get_lines(file);
 	if (!lines)
-		exit_malloc();
+		exit_error("An allocation failed");
 	if (!get_map_size(&map, lines))
 	{
 		ft_lstclear(&lines, free);
