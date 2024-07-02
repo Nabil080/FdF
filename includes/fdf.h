@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 04:59:46 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 05:43:37 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,6 @@
 # include "libft.h"
 # include "defines.h"
 
-/*structs*/
-typedef struct s_map{
-	size_t	height;
-	size_t	width;
-	int		**tab;
-}t_map;
-
-typedef struct t_data{
-	t_map	*map;
-	void	*mlx;
-	void	*win;
-	void	*img;
-	void	*adr;
-}t_data;
 /*parsing*/
 void	check_file(char *file);
 

@@ -20,6 +20,7 @@ INCLUDES =	includes \
 SRCS_NAMES =	main.c \
 				exit.c \
 				parsing.c \
+				init.c \
 				debug.c
 
 SRCS_DIR = srcs/
