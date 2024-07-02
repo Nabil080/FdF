@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/29 19:41:53 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 03:02:29 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,48 +27,69 @@ void	check_args(int argc, char **argv)
 		exit_args();
 	close (fd);
 }
-static t_map	*get_size(t_list *lines)
+static void	*get_map_size(t_map **map, t_list *lines)
 {
-	t_map	*map;
 	size_t	width;
 	size_t	height;
 
-	width = ft_strlen(lines->content);
+	width = ft_countwords(lines->content, " \n");
 	height = 0;
 	while (lines)
 	{
-		if (width != ft_strlen(lines->content))
+		if (width != ft_countwords(lines->content, " \n"))
 			return (NULL);
 		height++;
 		lines = lines->next;
 	}
-	map = malloc(sizeof(t_map));
-	if (!map)
+	*map = malloc(sizeof(t_map));
+	if (!*map)
 		return (NULL);
-	map->height = height;
-	map->width = width;
-	return (map);
+	(*map)->height = height;
+	(*map)->width = width;
+	return (*map);
 }
+
+static void	*get_map_tab(t_map **map, t_list *lines)
+{
+	int	**tab;
+	size_t	row;
+
+	tab = malloc((*map)->height * sizeof(int *));
+	if (!tab)
+		return (NULL);
+	row = 0;
+	while (lines)
+	{
+		tab[row] = ft_splittoi(lines->content, " \n");
+		if (!tab[row])
+			return (free_2d((void **)tab, row));
+		row++;
+		lines = lines->next;
+	}
+	(*map)->tab = tab;
+	return (*map);
+}
+
 t_map	*get_map(char *file)
 {
 	t_map	*map;
 	t_list	*lines;
 
-	// recupere les lignes en liste chainee
+	map = NULL;
 	lines = get_lines(file);
 	if (!lines)
 		exit_malloc();
-	// verifie que la map est valide
-	map = get_size(lines);
-	// sinon free lines et return
-	if (!map)
+	if (!get_map_size(&map, lines))
 	{
 		ft_lstclear(&lines, free);
 		exit_args();
 	}
-	ft_putlst(lines);
-	// todo : get map data (height, width, int**)
-	// map = lst_to_map(lines);
+	if (!get_map_tab(&map, lines))
+	{
+		ft_lstclear(&lines, free);
+		free(map);
+		exit_malloc();
+	}
 	ft_lstclear(&lines, free);
 	return (map);
 }

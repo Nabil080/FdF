@@ -19,7 +19,8 @@ INCLUDES =	includes \
 
 SRCS_NAMES =	main.c \
 				exit.c \
-				parsing.c
+				parsing.c \
+				debug.c
 
 SRCS_DIR = srcs/
 
@@ -71,5 +72,5 @@ test : all
 	./${NAME} 42.fdf
 
 error : all
-	./${NAME} invalid	.fdf
+	./${NAME} invalid.fdf
 

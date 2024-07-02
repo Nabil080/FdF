@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_lines.c                                        :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/29 19:14:55 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/29 20:25:25 by nbellila         ###   ########.fr       */
+/*   Created: 2024/06/29 20:15:11 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/29 20:33:53 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-t_list	*get_lines(char *filename)
+void	show_map(t_map *map)
 {
-	t_list	*lines;
-	t_list	*new;
-	char	*line;
-	int		fd;
+	size_t	col;
+	size_t	row;
 
-	lines = NULL;
-	fd = open(filename, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	row = 0;
+	while (row < map->height)
 	{
-		new = ft_lstnew(line);
-		if (!new)
+		col = 0;
+		while (col < map->width)
 		{
-			free(line);
-			ft_lstclear(&lines, free);
-			return (NULL);
+			ft_putnbr_fd(map->tab[row][col], 2);
+			while (map->tab[row][col] < 100)
+			{
+				if (map->tab[row][col] == 0)
+					map->tab[row][col]++;
+				map->tab[row][col] *= 10;
+				ft_putchar_fd(' ', 2);
+			}
+			ft_putchar_fd(' ', 2);
+			col++;
 		}
-		ft_lstadd_back(&lines, new);
-		line = get_next_line(fd);
+		ft_putchar_fd('\n', 2);
+		row++;
 	}
-	close(fd);
-	return (lines);
 }
