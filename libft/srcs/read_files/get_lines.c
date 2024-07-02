@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 19:14:55 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/29 20:25:25 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 04:07:22 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_list	*get_lines(char *filename)
 		{
 			free(line);
 			ft_lstclear(&lines, free);
+			close(fd);
 			return (NULL);
 		}
 		ft_lstadd_back(&lines, new);

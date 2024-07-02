@@ -6,25 +6,37 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 03:02:29 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 04:09:19 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	check_args(int argc, char **argv)
+void	check_file(char *file)
 {
 	int		fd;
+	char buffer[1];
 
-	if (argc != 2)
+	if (ft_strlen(file) < 4)
 		exit_args();
-	if (ft_strlen(argv[1]) < 4)
+	if (ft_strcmp(".fdf", file + ft_strlen(file) - 4))
 		exit_args();
-	if (ft_strcmp(".fdf", argv[1] + ft_strlen(argv[1]) - 4))
-		exit_args();
-	fd = open(argv[1], O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit_args();
+	{
+		close (fd);
+		exit_error("The file does not exist");
+	}
+	if (read(fd, 0, 0) < 0)
+	{
+		close (fd);
+		exit_error("The file cannot be read");
+	}
+	if (read(fd, buffer, 1) < 1)
+	{
+		close (fd);
+		exit_error("The file is empty");
+	}
 	close (fd);
 }
 static void	*get_map_size(t_map **map, t_list *lines)
@@ -43,7 +55,10 @@ static void	*get_map_size(t_map **map, t_list *lines)
 	}
 	*map = malloc(sizeof(t_map));
 	if (!*map)
-		return (NULL);
+	{
+		ft_lstclear(&lines, free);
+		exit_error("An allocation failed");
+	}
 	(*map)->height = height;
 	(*map)->width = width;
 	return (*map);
@@ -82,13 +97,13 @@ t_map	*get_map(char *file)
 	if (!get_map_size(&map, lines))
 	{
 		ft_lstclear(&lines, free);
-		exit_args();
+		exit_error("Please give a rectangular map with numeric values");
 	}
 	if (!get_map_tab(&map, lines))
 	{
 		ft_lstclear(&lines, free);
 		free(map);
-		exit_malloc();
+		exit_error("An allocation failed");
 	}
 	ft_lstclear(&lines, free);
 	return (map);
