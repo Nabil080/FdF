@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_skipchar.c                                      :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 17:42:09 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/29 20:50:38 by nbellila         ###   ########.fr       */
+/*   Created: 2024/07/02 03:24:34 by nbellila          #+#    #+#             */
+/*   Updated: 2024/07/02 03:45:23 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_skipcharset(char const *s, char *set)
+void	*free_2d(void **tab, size_t size)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i] && ft_strchr(set, s[i]))
+	while (i < size)
+	{
+		free(tab[i]);
 		i++;
-	return (i);
+	}
+	free(tab);
+	return (NULL);
 }

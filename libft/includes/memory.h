@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:18:39 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 14:30:52 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 03:46:27 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MEMORY_H
 
 # include <stdlib.h>
+
+void	*free_2d(void **tab, size_t size);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 

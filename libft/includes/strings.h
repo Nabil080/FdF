@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:20:11 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/27 22:32:33 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 03:46:33 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t siz);
 
 size_t	ft_countchar(char const *s, char const c);
 
-size_t	ft_skipchar(char const *s, char c);
+size_t	ft_skipcharset(char const *s, char *set);
 
-size_t	ft_reachchar(char const *s, char c);
+size_t	ft_reachcharset(char const *s, char *set);
 
 char	*ft_strchr(const char *s, int c);
 
@@ -51,11 +51,11 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 char	*ft_strtrim(char const *s1, char const *set);
 
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char *set);
 
-void	*free_2d(void **tab, size_t size);
+int		*ft_splittoi(char *str, char *set);
 
-size_t	ft_countwords(char const *s, char c);
+size_t	ft_countwords(char const *s, char *set);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
