@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:09:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/29 19:42:53 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 04:05:56 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	exit_args(void)
 
 void	exit_malloc(void)
 {
-	ft_putendl_fd("An allocation failed", 2);
+	exit_error("An allocation failed");
+}
+
+void	exit_error(char *str)
+{
+	ft_putendl_fd(str, 2);
 	exit(EXIT_FAILURE);
+}
+
+void	exit_success(t_map *map)
+{
+	free_2d((void **)map->tab, map->height);
+	free(map);
+	exit(EXIT_SUCCESS);
 }
