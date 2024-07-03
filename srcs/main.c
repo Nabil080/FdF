@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:08:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 18:06:31 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:17:12 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	data = init_data(map);
 	if (!data || !init_mlx(data))
 	{
+		free_map(map);
 		free_data(data);
 		exit_error("An allocation failed");
 	}
