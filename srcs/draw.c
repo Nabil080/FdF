@@ -6,41 +6,73 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 12:30:11 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:42:38 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// static void	iso(int *x, int *y, int z)
-// {
-//     int previous_x;
-//     int previous_y;
-
-//     previous_x = *x;
-//     previous_y = *y;
-//     *x = (previous_x - previous_y) * cos(0.523599);
-//     *y = -z + (previous_x + previous_y) * sin(0.523599);
-// }
-
 static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	char	*dst;
+	char	*pixel;
 	int		offset;
-	t_img	*img;
 
-	img = data->img;
-	// iso(&x, &y, data->map->tab[y][x]);
-	offset = (y * img->line_length + x * (img->bits_per_pixel / 8));
-	dst = img->addr + offset;
-	*(unsigned int*)dst = color;
+	ft_printf("Received (x:%d,y:%d)\n", x, y);
+	// y += data->height / 2 - data->map->height * 10 / 2;
+	// x += data->width / 2 - data->map->width * 10 / 2;
+	offset = (y * data->img->line_length + x * (data->img->bits_per_pixel / 8));
+	pixel = data->img->addr + offset;
+	*(unsigned int *)pixel = color;
+	ft_printf("Printed (x:%d,y:%d)\n", x, y);
+}
+
+static void	bresenham_right(t_data *data, int x, int y)
+{
+	int	x2;
+	int	y2;
+	int	p;
+	int	dx;
+	int	dy;
+
+	x2 = x + 1 * get_spacing(data);
+	y2 = y * get_spacing(data);
+	ft_printf("x: %d, y: %d, x2: %d, y2: %d\n", x, y, x2, y2);
+	dx = x2 - x;  
+    dy = y2 - y;  
+    p = 2 * dy - dx;  
+    while(x < x2)  
+    {  
+		ft_printf("SENT (x:%d, y:%d)\n", x, y);
+        if(p >= 0)  
+        {
+            my_mlx_pixel_put(data, x, y, WHITE);
+            y = y + 1;  
+            p = p + 2 * dy - 2 * dx;  
+        }  
+        else  
+        {  
+            my_mlx_pixel_put(data, x, y, WHITE);
+            p = p + 2 * dy;
+		}
+		x = x + 1;  
+	}
+}
+/* Draws the bottom and right lines of a point */
+static void	draw_lines(t_data *data, int x, int y)
+{
+	if (x + 1 < data->map->width)
+		bresenham_right(data, x, y);
+	if (y + 1 < data->map->height)
+		return ;
 }
 
 void	draw_map(t_data *data)
 {
-	size_t	x;
-	size_t	y;
+	int	x;
+	int	y;
+	int	spacing;
 
+	spacing = get_spacing(data);
 	y = 0;
 	while (y < data->map->height)
 	{
@@ -48,9 +80,11 @@ void	draw_map(t_data *data)
 		while (x < data->map->width)
 		{
 			if (data->map->tab[y][x] == 0)
-				my_mlx_pixel_put(data, x * 10, y * 10, WHITE);
+				my_mlx_pixel_put(data, x * spacing, y * spacing, WHITE);
 			else
-				my_mlx_pixel_put(data, x * 10, y * 10, GREEN);
+				my_mlx_pixel_put(data, x * spacing, y * spacing, GREEN);
+			if (0)
+				draw_lines(data, x, y);
 			x++;
 		}
 		y++;
