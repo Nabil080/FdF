@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 16:06:30 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:38:46 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,17 @@
 # define WHITE 0xFFFFFFFF
 
 /*structs*/
+typedef struct s_pos{
+	int	x;
+	int	y;
+	int	z;
+}t_pos;
+
 typedef struct s_map{
-	int	height;
-	int	width;
-	int	**tab;
+	int		height;
+	int		width;
+	int		**tab;
+	t_pos	***pos;
 }t_map;
 
 typedef struct	s_img {

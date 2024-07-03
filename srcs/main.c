@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:08:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 14:58:42 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:57:05 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 		free_data(data);
 		exit_error("An allocation failed");
 	}
-	// show_map(map);
-	draw_map(data);
+	draw_points(data);
+	show_pos(map);
 	ft_printf("height : %d, width : %d\n", data->map->height, data->map->width);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
 	mlx_key_hook(data->win, key_hook, data);
