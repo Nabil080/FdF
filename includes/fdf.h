@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 19:08:48 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:35:43 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	center(t_data *data, t_pos *pos, int spacing);
 int		get_color(int z);
 
 int		get_spacing(t_data *data);
+
+void	iso(int *x, int *y, int z);
 /*utils*/
 t_pos	*ft_newpos(int x, int y, int z);
 /*handler*/

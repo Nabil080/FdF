@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 17:09:33 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:54:16 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,14 @@ void	center(t_data *data, t_pos *pos, int spacing)
 		pos->x += (data->width - (data->map->width - 1) * spacing) / 2;
 		pos->y += (data->height - (data->map->height - 1) * spacing) / 2;
 	}
+}
+void	iso(int *x, int *y, int z)
+{
+    int	previous_x;
+    int	previous_y;
+
+    previous_x = *x;
+    previous_y = *y;
+    *x = (previous_x - previous_y) * cos(0.523599);
+    *y = -z + (previous_x + previous_y) * sin(0.523599);
 }

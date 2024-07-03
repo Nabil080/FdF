@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 19:30:17 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:42:36 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	put_pixel(t_data *data, t_pos *pos, int spacing)
 		pos->x *= spacing;
 		center(data, pos, spacing);
 	}
+	if (0)
+		iso(&pos->x, &pos->y, pos->z);
 	offset = (pos->y * data->img->line_length + pos->x
 			* (data->img->bits_per_pixel / 8));
 	pixel = data->img->addr + offset;
@@ -71,26 +73,101 @@ void	draw_lines(t_data *data)
 		y++;
 	}
 }
-
-static void	draw_line(t_data *data, t_pos a, t_pos b)
+static void	bresenham_low_slope(t_data *data, t_pos a, t_pos b)
 {
-	t_pos current;
-
+	t_pos	current;
+	int	dx;
+	int	dy;
+	int	yi;
+	int	d;
+	
+	dx = b.x - a.x;
+	dy = b.y - a.y;
+	yi = 1;
+	if (dy < 0)
+	{
+		yi = -1;
+		dy = -dy;
+	}
+	d = 2 * dy - dx;
 	current.x = a.x;
 	current.y = a.y;
 	current.z = a.z;
 	while (current.x < b.x)
 	{
-		if (b.x - current.x > (b.x - current.x) / 2)
+		if (b.x - current.x <= (b.x - a.x) / 2)
 			current.z = b.z;
-		current.x++;
 		put_pixel(data, &current, 0);
+		if (d > 0)
+		{
+			current.y += yi;
+			d = d + (2 * (dy - dx));
+		}
+		else
+			d = d + 2 * dy;
+		current.x++;
 	}
+}
+
+void	bresenham_high_slope(t_data *data, t_pos a, t_pos b)
+{
+	t_pos	current;
+	int	dx;
+	int	dy;
+	int	xi;
+	int	d;
+	
+	dx = b.x - a.x;
+	dy = b.y - a.y;
+	xi = 1;
+	if (dx < 0)
+	{
+		xi = -1;
+		dx = -dx;
+	}
+	d = 2 * dx - dy;
+	current.x = a.x;
+	current.y = a.y;
+	current.z = a.z;
 	while (current.y < b.y)
 	{
-		if (b.y - current.y > (b.y - current.y) / 2)
+		if (b.y - current.y <= (b.y - a.y) / 2)
 			current.z = b.z;
-		current.y++;
 		put_pixel(data, &current, 0);
+		if (d > 0)
+		{
+			current.x += xi;
+			d = d + (2 * (dx - dy));
+		}
+		else
+			d = d + 2 * dx;
+		current.y++;
+	}
+}
+
+static void	draw_line(t_data *data, t_pos a, t_pos b)
+{
+	t_pos	x;
+	t_pos	y;
+
+	x = a;
+	y = b;
+	if (abs(b.y - a.y) < abs(b.x - a.x))
+	{
+		if (a.x > b.x)
+		{
+			x = b;
+			y = b;
+		}
+		bresenham_low_slope(data, x, y);
+	}
+	else
+	{
+		if (a.y > b.y)
+		{
+			x = b;
+			y = b;
+		}
+		bresenham_high_slope(data, x, y);
 	}
 }
