@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 05:52:23 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 06:22:00 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define ESC 65307
 /*colors*/
 # define GREEN 0x0000FF00
+# define WHITE 0xFFFFFFFF
 
 /*structs*/
 typedef struct s_map{

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 05:43:37 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 06:25:35 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	free_map(t_map *map);
 t_data	*init_data(t_map *map);
 
 void	*init_mlx(t_data *data);
+/*handler*/
+int	key_hook(int keycode, t_data *data);
+
 /*debug*/
 void	show_map(t_map *map);
 

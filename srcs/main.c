@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:08:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 06:21:23 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 06:33:08 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	draw_map(t_data *data)
 		y = 0;
 		while (y < data->map->height)
 		{
-			my_mlx_pixel_put(data->img, x * 10, y * 10, GREEN);
+			my_mlx_pixel_put(data->img, x * 10, y * 10, WHITE);
 			y++;
 		}
 		x++;
@@ -58,6 +58,7 @@ int	main(int argc, char **argv)
 	show_map(map);
 	draw_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
+	mlx_key_hook(data->win, key_hook, data);
 	mlx_loop(data->mlx);
 	exit_success(data);
 }
