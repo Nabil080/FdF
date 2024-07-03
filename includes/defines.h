@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 06:22:00 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:42:35 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define DEFINES_H
 
 /*window*/
-# define SIZE 100
-# define WIDTH 1920
-# define HEIGHT 1080
 # define TITLE "Filu de Feru"
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
+# define DEFAULT_ZOOM 1
 /*keys*/
 # define Q 113
 # define ESC 65307
@@ -27,9 +27,9 @@
 
 /*structs*/
 typedef struct s_map{
-	size_t	height;
-	size_t	width;
-	int		**tab;
+	int	height;
+	int	width;
+	int	**tab;
 }t_map;
 
 typedef struct	s_img {
@@ -45,6 +45,9 @@ typedef struct t_data{
 	void	*win;
 	t_img	*img;
 	void	*adr;
+	int		width;
+	int		height;
+	int		zoom;
 }t_data;
 
 
