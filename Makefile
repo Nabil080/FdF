@@ -6,7 +6,7 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-LINKFLAGS = -lmlx -lXext -lX11 -L minilibx
+LINKFLAGS = -lm -lmlx -lXext -lX11 -L minilibx
 
 CPPFLAGS = -I minilibx
 
@@ -22,6 +22,7 @@ SRCS_NAMES =	main.c \
 				parsing.c \
 				init.c \
 				handler.c \
+				draw.c \
 				debug.c
 
 SRCS_DIR = srcs/
