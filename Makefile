@@ -57,7 +57,7 @@ norm :
 
 ######################## COMPILATION ########################
 
-${NAME} : ${OBJS_DIR} ${OBJS}
+${NAME} : ${OBJS_DIR} ${OBJS} includes/fdf.h includes/defines.h
 	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
 	${CC} ${FLAGS} ${OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o $@ ${LINKFLAGS}
 
@@ -73,8 +73,16 @@ ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
 	
 ######################## TEST ########################
 
-test : all
+test : square
+
+42 : all
 	./${NAME} 42.fdf
+
+square : all
+	./${NAME} square.fdf
+
+long : all
+	./${NAME} long.fdf
 
 error : all
 	./${NAME} invalid.fdf
