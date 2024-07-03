@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 14:42:38 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:19:32 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*pixel;
 	int		offset;
 
-	ft_printf("Received (x:%d,y:%d)\n", x, y);
-	// y += data->height / 2 - data->map->height * 10 / 2;
-	// x += data->width / 2 - data->map->width * 10 / 2;
+	center(data, &x, &y);
 	offset = (y * data->img->line_length + x * (data->img->bits_per_pixel / 8));
 	pixel = data->img->addr + offset;
 	*(unsigned int *)pixel = color;
-	ft_printf("Printed (x:%d,y:%d)\n", x, y);
 }
 
 static void	bresenham_right(t_data *data, int x, int y)
