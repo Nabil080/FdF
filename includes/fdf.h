@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 06:25:35 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/02 06:43:16 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include <mlx.h>
+# include <math.h>
 # include "libft.h"
 # include "defines.h"
 
@@ -35,9 +36,10 @@ void	free_map(t_map *map);
 t_data	*init_data(t_map *map);
 
 void	*init_mlx(t_data *data);
+/*draw*/
+void	draw_map(t_data *data);
 /*handler*/
 int	key_hook(int keycode, t_data *data);
-
 /*debug*/
 void	show_map(t_map *map);
 
