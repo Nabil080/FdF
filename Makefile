@@ -24,6 +24,7 @@ SRCS_NAMES =	main.c \
 				handler.c \
 				draw.c \
 				draw_utils.c \
+				convert.c \
 				utils.c \
 				debug.c
 
