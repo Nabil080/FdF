@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:09:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 17:09:06 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:33:16 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	free_data(t_data *data)
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->img)
-		mlx_destroy_image(data->mlx, data->img);
+	{
+		mlx_destroy_image(data->mlx, data->img->img);
+		free(data->img);
+	}
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free(data);
@@ -51,6 +54,28 @@ void	free_data(t_data *data)
 
 void	free_map(t_map *map)
 {
-	free_2d((void **)map->tab, map->height);
+	int	x;
+	int	y;
+
+	if (map->tab)
+		free_2d((void **)map->tab, map->height);
+	if (!map->pos)
+	{
+		free(map);
+		return ;
+	}
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			free(map->pos[y][x]);
+			x++;
+		}
+		free(map->pos[y]);
+		y++;
+	}
+	free(map->pos);
 	free(map);
 }
