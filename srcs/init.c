@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 16:11:38 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:14:12 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	*init_mlx(t_data *data)
 	data->img->img = mlx_new_image(data->mlx, data->width, data->height);
 	if (!data->img)
 		return (NULL);
-	data->img->addr = mlx_get_data_addr(data->img->img, 
-	&data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
-	// data->adr = mlx_get_data_addr(data->img,)
+	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bpp,
+			&data->img->line_length, &data->img->endian);
 	return (data);
 }

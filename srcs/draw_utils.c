@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 16:57:54 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:09:33 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_color(int z)
 	return (WHITE);
 }
 
-int get_spacing(t_data *data)
+int	get_spacing(t_data *data)
 {
 	if (data->map->width > data->map->height)
 		return ((data->width / (data->map->width)) * data->zoom);
