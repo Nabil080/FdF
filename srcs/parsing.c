@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 04:36:32 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:57:08 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,29 @@ static void	*get_map_tab(t_map **map, t_list *lines)
 	return (*map);
 }
 
+static void	*get_map_pos(t_map **map)
+{
+	int		row;
+	int 	col;
+	t_pos ***pos;
+
+	pos = malloc((*map)->height * sizeof(t_pos **));
+	row = 0;
+	while (row < (*map)->height)
+	{
+		pos[row] = malloc((*map)->width * sizeof(t_pos *));
+		col = 0;
+		while (col < (*map)->width)
+		{
+			pos[row][col] = ft_newpos(col, row, (*map)->tab[row][col]);
+			col++;
+		}
+		row++;
+	}
+	(*map)->pos = pos;
+	return (map);
+}
+
 t_map	*get_map(char *file)
 {
 	t_map	*map;
@@ -105,6 +128,7 @@ t_map	*get_map(char *file)
 		free(map);
 		exit_error("An allocation failed");
 	}
+	get_map_pos(&map);
 	ft_lstclear(&lines, free);
 	return (map);
 }

@@ -24,6 +24,7 @@ SRCS_NAMES =	main.c \
 				handler.c \
 				draw.c \
 				draw_utils.c \
+				utils.c \
 				debug.c
 
 SRCS_DIR = srcs/
