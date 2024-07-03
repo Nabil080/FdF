@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:09:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 18:06:29 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:28:39 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,31 @@ void	exit_error(char *str)
 
 void	exit_success(t_data *data)
 {
+	free_map(data->map);
 	free_data(data);
 	exit(EXIT_SUCCESS);
 }
 
 void	free_data(t_data *data)
 {
+	ft_printf("free data\n");
 	if (!data)
 		return ;
-	if (data->map)
-		free_map(data->map);
+	ft_printf("free mlx\n");
 	if (!data->mlx)
 		return (free(data));
+	ft_printf("destroy window\n");
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->img)
 	{
+	ft_printf("destroy && free image\n");
 		mlx_destroy_image(data->mlx, data->img->img);
 		free(data->img);
 	}
+	ft_printf("destroy display\n");
 	mlx_destroy_display(data->mlx);
+	ft_printf("free mlx && data\n");
 	free(data->mlx);
 	free(data);
 }
