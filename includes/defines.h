@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 15:01:24 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:06:30 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct t_data{
 	void	*mlx;
 	void	*win;
 	t_img	*img;
-	void	*adr;
 	int		width;
 	int		height;
 	int		zoom;

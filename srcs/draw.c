@@ -6,18 +6,25 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 15:19:32 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:16:36 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+static void	put_pixel(t_data *data, int spacing, int x, int y)
 {
 	char	*pixel;
 	int		offset;
+	int		color;
 
-	center(data, &x, &y);
+	color = get_color(data->map->tab[y][x]);
+	if (spacing > 0)
+	{
+		y *= spacing;
+		x *= spacing;
+		center(data, spacing, &x, &y);
+	}
 	offset = (y * data->img->line_length + x * (data->img->bits_per_pixel / 8));
 	pixel = data->img->addr + offset;
 	*(unsigned int *)pixel = color;
@@ -42,13 +49,13 @@ static void	bresenham_right(t_data *data, int x, int y)
 		ft_printf("SENT (x:%d, y:%d)\n", x, y);
         if(p >= 0)  
         {
-            my_mlx_pixel_put(data, x, y, WHITE);
+            put_pixel(data, 0, x, y);
             y = y + 1;  
             p = p + 2 * dy - 2 * dx;  
         }  
         else  
         {  
-            my_mlx_pixel_put(data, x, y, WHITE);
+            put_pixel(data, 0, x, y);
             p = p + 2 * dy;
 		}
 		x = x + 1;  
@@ -67,19 +74,14 @@ void	draw_map(t_data *data)
 {
 	int	x;
 	int	y;
-	int	spacing;
 
-	spacing = get_spacing(data);
 	y = 0;
 	while (y < data->map->height)
 	{
 		x = 0;
 		while (x < data->map->width)
 		{
-			if (data->map->tab[y][x] == 0)
-				my_mlx_pixel_put(data, x * spacing, y * spacing, WHITE);
-			else
-				my_mlx_pixel_put(data, x * spacing, y * spacing, GREEN);
+			put_pixel(data, get_spacing(data), x, y);
 			if (0)
 				draw_lines(data, x, y);
 			x++;

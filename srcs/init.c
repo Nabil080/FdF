@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 15:04:25 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:11:38 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_data	*init_data(t_map *map)
 	data->zoom = DEFAULT_ZOOM;
 	data->mlx = NULL;
 	data->win = NULL;
-	data->adr = NULL;
 	return (data);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 14:50:00 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:56:51 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	key_hook(int keycode, t_data *data)
 {
 	if (keycode == ESC)
-		mlx_loop_end(data->mlx);
+		exit_success(data);
 	return (0);
 }

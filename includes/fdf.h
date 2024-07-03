@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 15:20:42 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:17:04 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*init_mlx(t_data *data);
 /*draw*/
 void	draw_map(t_data *data);
 /*draw_utils*/
-void	center(t_data *data, int *x, int *y);
+void	center(t_data *data, int spacing, int *x, int *y);
 
 int	get_color(int z);
 

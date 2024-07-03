@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:09:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/02 05:57:35 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:07:50 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	free_data(t_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->img)
 		mlx_destroy_image(data->mlx, data->img);
-	if (data->adr)
-		free(data->adr);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free(data);
