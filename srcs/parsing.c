@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 17:32:53 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:09:30 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,24 @@ static void	*get_map_size(t_map **map, t_list *lines)
 {
 	size_t	width;
 	size_t	height;
+	t_list	*current;
 
 	width = ft_countwords(lines->content, " \n");
 	height = 0;
-	while (lines)
+	current = lines;
+	while (current)
 	{
-		if (width != ft_countwords(lines->content, " \n"))
-			return (NULL);
+		if (width != ft_countwords(current->content, " \n"))
+		{
+			ft_lstclear(&lines, free);
+			exit_error("Please give a rectangular map with numeric values");
+		}
 		height++;
-		lines = lines->next;
+		current = current->next;
 	}
 	*map = malloc(sizeof(t_map));
 	if (!*map)
-	{
-		ft_lstclear(&lines, free);
-		exit_error("An allocation failed");
-	}
+		return (NULL);
 	(*map)->height = height;
 	(*map)->width = width;
 	return (*map);
@@ -88,22 +90,28 @@ static void	*get_map_tab(t_map **map, t_list *lines)
 
 static void	*get_map_pos(t_map **map)
 {
-	int		row;
-	int		col;
+	int		y;
+	int		x;
 	t_pos	***pos;
 
 	pos = malloc((*map)->height * sizeof(t_pos **));
-	row = 0;
-	while (row < (*map)->height)
+	if (!pos)
+		return (NULL);
+	y = 0;
+	while (y < (*map)->height)
 	{
-		pos[row] = malloc((*map)->width * sizeof(t_pos *));
-		col = 0;
-		while (col < (*map)->width)
+		pos[y] = malloc((*map)->width * sizeof(t_pos *));
+		if (!pos[y])
+			return (free_2d((void **)pos, y));
+		x = 0;
+		while (x < (*map)->width)
 		{
-			pos[row][col] = ft_newpos(col, row, (*map)->tab[row][col]);
-			col++;
+			pos[y][x] = ft_newpos(x, y, (*map)->tab[y][x]);
+			if (!pos[y][x])
+				return (free_2d((void **)pos[y], x), free_2d((void **)pos, y));
+			x++;
 		}
-		row++;
+		y++;
 	}
 	(*map)->pos = pos;
 	return (map);
@@ -116,19 +124,17 @@ t_map	*get_map(char *file)
 
 	map = NULL;
 	lines = get_lines(file);
-	if (!lines)
-		exit_error("An allocation failed");
-	if (!get_map_size(&map, lines))
+	if (!lines || !get_map_size(&map, lines))
 	{
 		ft_lstclear(&lines, free);
-		exit_error("Please give a rectangular map with numeric values");
+		exit_error("An allocation failed");
 	}
 	map->tab = NULL;
 	map->pos = NULL;
 	if (!get_map_tab(&map, lines) || !get_map_pos(&map))
 	{
 		ft_lstclear(&lines, free);
-		free(map);
+		free_map(map);
 		exit_error("An allocation failed");
 	}
 	ft_lstclear(&lines, free);
