@@ -57,7 +57,7 @@ norm :
 
 ######################## COMPILATION ########################
 
-${NAME} : ${OBJS_DIR} ${OBJS} includes/fdf.h includes/defines.h
+${NAME} : ${OBJS_DIR} ${OBJS}
 	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
 	${CC} ${FLAGS} ${OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o $@ ${LINKFLAGS}
 
