@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 17:14:59 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:32:53 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,13 +123,14 @@ t_map	*get_map(char *file)
 		ft_lstclear(&lines, free);
 		exit_error("Please give a rectangular map with numeric values");
 	}
-	if (!get_map_tab(&map, lines))
+	map->tab = NULL;
+	map->pos = NULL;
+	if (!get_map_tab(&map, lines) || !get_map_pos(&map))
 	{
 		ft_lstclear(&lines, free);
 		free(map);
 		exit_error("An allocation failed");
 	}
-	get_map_pos(&map);
 	ft_lstclear(&lines, free);
 	return (map);
 }

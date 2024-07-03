@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 17:17:12 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:22:10 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_map{
 typedef struct s_img {
 	void	*img;
 	char	*addr;
-	int		bpp;
+	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }t_img;
