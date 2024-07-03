@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:15:11 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 16:55:22 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:17:13 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	show_map(t_map *map)
 
 void	show_pos(t_map *map)
 {
-	int 	col;
-	int 	row;
+	int		col;
+	int		row;
 	t_pos	*pos;
 
 	row = 0;
@@ -52,7 +52,8 @@ void	show_pos(t_map *map)
 		while (col < map->width)
 		{
 			pos = map->pos[row][col];
-			ft_printf("pos[%d][%d]: (x:%d, y:%d, z:%d)\n", row, col, pos->x, pos->y, pos->z);
+			ft_printf("pos[%d][%d]: (x:%d, y:%d, z:%d)\n",
+				row, col, pos->x, pos->y, pos->z);
 			col++;
 		}
 		row++;

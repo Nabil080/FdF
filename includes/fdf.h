@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 16:56:49 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:17:12 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	draw_lines(t_data *data);
 /*draw_utils*/
 void	center(t_data *data, t_pos *pos, int spacing);
 
-int	get_color(int z);
+int		get_color(int z);
 
-int get_spacing(t_data *data);
+int		get_spacing(t_data *data);
 /*utils*/
 t_pos	*ft_newpos(int x, int y, int z);
 /*handler*/
-int	key_hook(int keycode, t_data *data);
+int		key_hook(int keycode, t_data *data);
 /*debug*/
 void	show_map(t_map *map);
 

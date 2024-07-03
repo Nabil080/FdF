@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 16:57:08 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:14:59 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_file(char *file)
 {
 	int		fd;
-	char buffer[1];
+	char	buffer[1];
 
 	if (ft_strlen(file) < 4)
 		exit_args();
@@ -39,6 +39,7 @@ void	check_file(char *file)
 	}
 	close (fd);
 }
+
 static void	*get_map_size(t_map **map, t_list *lines)
 {
 	size_t	width;
@@ -66,7 +67,7 @@ static void	*get_map_size(t_map **map, t_list *lines)
 
 static void	*get_map_tab(t_map **map, t_list *lines)
 {
-	int	**tab;
+	int		**tab;
 	size_t	row;
 
 	tab = malloc((*map)->height * sizeof(int *));
@@ -88,8 +89,8 @@ static void	*get_map_tab(t_map **map, t_list *lines)
 static void	*get_map_pos(t_map **map)
 {
 	int		row;
-	int 	col;
-	t_pos ***pos;
+	int		col;
+	t_pos	***pos;
 
 	pos = malloc((*map)->height * sizeof(t_pos **));
 	row = 0;

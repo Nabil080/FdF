@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 16:56:50 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:19:11 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	put_pixel(t_data *data, t_pos *pos, int spacing)
 		pos->x *= spacing;
 		center(data, pos, spacing);
 	}
-	offset = (pos->y * data->img->line_length +
-	pos->x * (data->img->bits_per_pixel / 8));
+	offset = (pos->y * data->img->line_length + pos->x
+			* (data->img->bits_per_pixel / 8));
 	pixel = data->img->addr + offset;
 	*(unsigned int *)pixel = color;
 }
