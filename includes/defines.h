@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 19:04:25 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/03 22:07:48 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /*window*/
 # define TITLE "Filu de Feru"
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 800
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
 # define DEFAULT_ZOOM 1
 /*keys*/
 # define Q 113
@@ -55,5 +55,12 @@ typedef struct t_data{
 	int		height;
 	int		zoom;
 }t_data;
+
+typedef struct s_bresenham{
+	int	dx;
+	int	dy;
+	int	i;
+	int	d;
+}t_vars;
 
 #endif
