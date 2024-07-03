@@ -21,6 +21,7 @@ SRCS_NAMES =	main.c \
 				exit.c \
 				parsing.c \
 				init.c \
+				handler.c \
 				debug.c
 
 SRCS_DIR = srcs/
