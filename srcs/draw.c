@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 19:33:29 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:57:02 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ void	put_pixel(t_data *data, t_pos *pos, int spacing)
 	{
 		pos->x *= data->zoom;
 		pos->y *= data->zoom;
-		//todo faire fonctionner iso
 		iso(&pos->x, &pos->y, pos->z);
 		center(data, pos, spacing);
 	}
-	// ///todo : gerer le wrapping
-	if (pos->x > data->width - 1 ||
-		pos->y > data->height - 1)
+	if (pos->x > data->width - 1
+		|| pos->y > data->height - 1)
 		return ;
 	if (pos->x < 0 || pos->y < 0)
 		return ;
