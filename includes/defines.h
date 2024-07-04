@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 19:38:33 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 21:07:19 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /*window*/
 # define TITLE "Filu de Feru"
-# define WINDOW_WIDTH 1000
-# define WINDOW_HEIGHT 1000
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
 # define DEFAULT_ZOOM 1
 # define ANGLE 0.523599
 /*keys*/
