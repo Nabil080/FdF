@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 22:23:35 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:05:45 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	get_color(int z)
 int	get_spacing(t_data *data)
 {
 	if (data->map->width > data->map->height)
-		return ((data->width / (data->map->width)) * data->zoom);
+		return ((data->width / (data->map->width)));
 	else
-		return ((data->height / (data->map->height)) * data->zoom);
+		return ((data->height / (data->map->height)));
 }
 
 void	center(t_data *data, t_pos *pos, int spacing)

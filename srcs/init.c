@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 18:28:37 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:18:53 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_data	*init_data(t_map *map)
 	data->map = map;
 	data->height = WINDOW_HEIGHT;
 	data->width = WINDOW_WIDTH;
-	data->zoom = DEFAULT_ZOOM;
+	data->zoom = get_spacing(data);
 	data->mlx = NULL;
 	data->win = NULL;
 	return (data);
