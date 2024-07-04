@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 18:05:45 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:39:19 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ void	iso(int *x, int *y, int z)
 
 	tmp_x = *x;
 	tmp_y = *y;
-	*x = (tmp_x - tmp_y) * cos(0.523599);
-	*y = (tmp_x + tmp_y) * sin(0.523599) - z;
+	*x = (tmp_x - tmp_y) * cos(ANGLE);
+	*y = (tmp_x + tmp_y) * sin(ANGLE) - z;
 }

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 22:10:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 17:59:14 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:31:08 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	draw_line(t_data *data, t_pos a, t_pos b)
 	t_pos	x;
 	t_pos	y;
 
+	ft_printf("a(%d,%d,%d)->b(%d,%d,%d):", a.x, a.y, a.z, b.x, b.y, b.z);
 	x = a;
 	y = b;
 	if (abs(b.y - a.y) < abs(b.x - a.x))
@@ -91,8 +92,10 @@ void	draw_line(t_data *data, t_pos a, t_pos b)
 		if (a.x > b.x)
 		{
 			x = b;
-			y = b;
+			y = a;
+			ft_printf("reversed ");
 		}
+		ft_printf("low_slope\n");
 		bresenham_low_slope(data, x, y);
 	}
 	else
@@ -100,8 +103,10 @@ void	draw_line(t_data *data, t_pos a, t_pos b)
 		if (a.y > b.y)
 		{
 			x = b;
-			y = b;
+			y = a;
+			ft_printf("reversed ");
 		}
+		ft_printf("high_slope\n");
 		bresenham_high_slope(data, x, y);
 	}
 }

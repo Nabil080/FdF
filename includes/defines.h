@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 18:45:02 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:38:33 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
 # define DEFAULT_ZOOM 1
+# define ANGLE 0.523599
 /*keys*/
 # define Q 113
 # define ESC 65307
