@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 19:13:02 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:56:44 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	key_hook(int keycode, t_data *data)
 		data->x -= 20;
 		redraw_img(data);
 	}
-	
 	return (0);
 }
 
