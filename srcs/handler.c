@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 18:30:54 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:13:02 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,54 @@ static void	reset_pos(t_map *map)
 	}
 }
 
+// static void	reput_img(t_data *data)
+// {
+// 	mlx_clear_window(data->mlx, data->win);
+// 	mlx_put_image_to_window(data->mlx, data->win,
+// 		data->img->img, data->x, data->y);
+// }
+
 static void	redraw_img(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img->img);
 	data->img->img = mlx_new_image(data->mlx, data->width, data->height);
 	data->img->addr = mlx_get_data_addr(data->img->img,
-		&data->img->bits_per_pixel,
-		&data->img->line_length,
-		&data->img->endian);
+			&data->img->bits_per_pixel,
+			&data->img->line_length,
+			&data->img->endian);
 	reset_pos(data->map);
 	draw_points(data);
 	draw_lines(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->img->img, data->x, data->y);
 }
 
 int	key_hook(int keycode, t_data *data)
 {
 	if (keycode == ESC)
 		exit_success(data);
+	if (keycode == 'w')
+	{
+		data->y += 20;
+		redraw_img(data);
+	}
+	if (keycode == 'a')
+	{
+		data->x += 20;
+		redraw_img(data);
+	}
+	if (keycode == 's')
+	{
+		data->y -= 20;
+		redraw_img(data);
+	}
+	if (keycode == 'd')
+	{
+		data->x -= 20;
+		redraw_img(data);
+	}
+	
 	return (0);
 }
 
