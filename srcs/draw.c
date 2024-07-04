@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 18:16:00 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:23:00 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,18 @@ void	put_pixel(t_data *data, t_pos *pos, int spacing)
 	color = get_color(pos->z);
 	if (spacing)
 	{
-		pos->y *= data->zoom;
 		pos->x *= data->zoom;
-		// iso(&pos->x, &pos->y, pos->z); 
+		pos->y *= data->zoom;
+		//todo faire fonctionner iso
+		// iso(&pos->x, &pos->y, pos->z);
 		center(data, pos, spacing);
 	}
-	// todo : gerer le wrapping et faire fonctionner iso
-	// if (pos->x < 0 || pos->y < 0 || pos->x > data->width || pos->y < data->height)
-	// 	return ;
-	// ft_printf("pos(%d,%d,%d)", pos->x, pos->y, pos->z);
-	// ft_printf("width : %d, height : %d\n", pos->x, pos->y, pos->z);
+	// ///todo : gerer le wrapping
+	if (pos->x > data->width - 1 ||
+		pos->y > data->height - 1)
+		return ;
+	if (pos->x < 0 || pos->y < 0)
+		return ;
 	offset = (pos->y * data->img->line_length + pos->x
 			* (data->img->bits_per_pixel / 8));
 	pixel = data->img->addr + offset;
@@ -48,7 +50,6 @@ void	draw_points(t_data *data)
 		x = 0;
 		while (x < data->map->width)
 		{
-			ft_printf("pos[%d][%d]: (%d,%d,%d)\n", y, x, data->map->pos[y][x]->x, data->map->pos[y][x]->y, data->map->pos[y][x]->z);
 			put_pixel(data, data->map->pos[y][x], data->zoom);
 			x++;
 		}
