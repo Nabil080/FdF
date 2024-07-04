@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:08:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 22:02:16 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:23:43 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	draw_lines(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
 	mlx_key_hook(data->win, key_hook, data);
+	mlx_mouse_hook(data->win, mouse_hook, data);
 	mlx_loop(data->mlx);
 	exit_success(data);
 }

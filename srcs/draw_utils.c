@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 22:10:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/03 22:22:52 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:59:14 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_vars	get_bresenham_vars(t_pos a, t_pos b, int isLow)
 		vars.i = -1;
 		vars.dy = -vars.dy;
 	}
-	else if (vars.dx < 0)
+	if (!isLow && vars.dx < 0)
 	{
 		vars.i = -1;
 		vars.dx = -vars.dx;
