@@ -6,13 +6,13 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 19:19:59 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 20:41:07 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	get_highest_pos(t_map *map)
+int	get_highest_pos(t_map *map)
 {
 	int	x;
 	int	y;
@@ -34,7 +34,7 @@ static int	get_highest_pos(t_map *map)
 	return (highest);
 }
 
-static int	get_default_zoom(t_data *data)
+int	get_default_zoom(t_data *data)
 {
 	int	spacing;
 	int	highest;

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 18:23:24 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 20:41:11 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	free_map(t_map *map);
 t_data	*init_data(t_map *map);
 
 void	*init_mlx(t_data *data);
+
+int	get_default_zoom(t_data *data);
+
+int	get_highest_pos(t_map *map);
 /*draw*/
 void	put_pixel(t_data *data, t_pos *pos);
 
