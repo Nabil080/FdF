@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 21:11:01 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:14:47 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ t_data	*init_data(t_map *map)
 	data->map = map;
 	data->height = WINDOW_HEIGHT;
 	data->width = WINDOW_WIDTH;
-	data->zoom = get_spacing(data);
+	if (data->map->width > data->map->height)
+		data->spacing = data->width / (data->map->width);
+	else
+		data->spacing = data->height / (data->map->height);
+	data->zoom = DEFAULT_ZOOM;
 	data->mlx = NULL;
 	data->win = NULL;
 	data->x = 0;

@@ -6,11 +6,18 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 22:10:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 20:31:06 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:18:50 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	get_color(int z)
+{
+	if (z > 0)
+		return (GREEN);
+	return (WHITE);
+}
 
 static t_vars	get_bresenham_vars(t_pos a, t_pos b, int isLow)
 {
@@ -44,7 +51,7 @@ static void	bresenham_low_slope(t_data *data, t_pos a, t_pos b)
 	{
 		if (b.x - current.x <= (b.x - a.x) / 2)
 			current.z = b.z;
-		put_pixel(data, &current, 0);
+		put_pixel(data, &current);
 		if (vars.d > 0)
 		{
 			current.y += vars.i;
@@ -67,7 +74,7 @@ static void	bresenham_high_slope(t_data *data, t_pos a, t_pos b)
 	{
 		if (b.y - current.y <= (b.y - a.y) / 2)
 			current.z = b.z;
-		put_pixel(data, &current, 0);
+		put_pixel(data, &current);
 		if (vars.d > 0)
 		{
 			current.x += vars.i;
