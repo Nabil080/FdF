@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 18:16:42 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:42:21 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int	key_hook(int keycode, t_data *data)
 
 int	mouse_hook(int button, int x, int y, t_data *data)
 {
+	if (button == 1)
+		ft_printf("x: %d, y: %d\n", x, y);
 	if (button == 4)
 	{
 		data->spacing += 1;

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 18:23:39 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 19:10:21 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	iso(t_data *data, t_pos *pos)
 	int	old_x;
 
 	old_x = pos->x;
-	pos->x = (pos->x - pos->y) * cos(ANGLE);
+	pos->x = (old_x - pos->y) * cos(ANGLE);
 	pos->y = (old_x + pos->y) * sin(ANGLE) - (pos->z * data->spacing);
 }
 
@@ -38,7 +38,7 @@ static void	center(t_data *data, t_pos *pos)
 static void	translate(t_data *data, t_pos *pos)
 {
 	pos->x += (data->width / 2) + data->x;
-	pos->y += + data->y;
+	pos->y +=  + data->y;
 }
 
 void	transform_pos(t_data *data, t_pos *pos)
