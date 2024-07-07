@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 18:26:49 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 21:27:42 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ typedef struct t_data{
 	int		zoom;
 	int		x;
 	int		y;
+	double		alpha;
+	double		gamma;
+	double		tetha;
 }t_data;
 
 typedef struct s_bresenham{

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 20:49:17 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 21:27:09 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	reset_pos(t_map *map)
 		{
 			map->pos[y][x]->x = x;
 			map->pos[y][x]->y = y;
+			map->pos[y][x]->z = map->tab[y][x];
 			x++;
 		}
 		y++;
@@ -53,6 +54,10 @@ int	key_hook(int keycode, t_data *data)
 		exit_success(data);
 	if (keycode == ' ')
 	{
+		reset_pos(data->map);
+		data->tetha = 0;
+		data->gamma = 0;
+		data->alpha = 0;
 		data->x = 0;
 		data->spacing = get_default_zoom(data);
 	}
@@ -64,6 +69,12 @@ int	key_hook(int keycode, t_data *data)
 		data->y -= 50;
 	if (keycode == 'd')
 		data->x -= 50;
+	if (keycode == 'z')
+		data->alpha += 0.1;
+	if (keycode == 'x')
+		data->tetha += 0.1;
+	if (keycode == 'v')
+		data->gamma += 0.1;
 	redraw_img(data);
 	return (0);
 }
