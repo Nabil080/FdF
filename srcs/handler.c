@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 19:56:44 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:16:42 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@ static void	reset_pos(t_map *map)
 	}
 }
 
-// static void	reput_img(t_data *data)
-// {
-// 	mlx_clear_window(data->mlx, data->win);
-// 	mlx_put_image_to_window(data->mlx, data->win,
-// 		data->img->img, data->x, data->y);
-// }
-
 static void	redraw_img(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->win);
@@ -51,7 +44,7 @@ static void	redraw_img(t_data *data)
 	draw_points(data);
 	draw_lines(data);
 	mlx_put_image_to_window(data->mlx, data->win,
-		data->img->img, data->x, data->y);
+		data->img->img, 0, 0);
 }
 
 int	key_hook(int keycode, t_data *data)
@@ -85,12 +78,12 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 {
 	if (button == 4)
 	{
-		data->zoom += 1;
+		data->spacing += 1;
 		redraw_img(data);
 	}
-	if (button == 5 && data->zoom > 1)
+	if (button == 5 && data->spacing > 1)
 	{
-		data->zoom -= 1;
+		data->spacing -= 1;
 		redraw_img(data);
 	}
 	x++;

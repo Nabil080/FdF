@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 19:57:10 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:23:24 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_data	*init_data(t_map *map);
 
 void	*init_mlx(t_data *data);
 /*draw*/
-void	put_pixel(t_data *data, t_pos *pos, int spacing);
+void	put_pixel(t_data *data, t_pos *pos);
 
 void	draw_points(t_data *data);
 
@@ -45,13 +45,9 @@ void	draw_lines(t_data *data);
 /*draw utils*/
 void	draw_line(t_data *data, t_pos a, t_pos b);
 /*convert*/
-void	center(t_data *data, t_pos *pos, int spacing);
-
 int		get_color(int z);
 
-int		get_spacing(t_data *data);
-
-void	iso(int *x, int *y, int z);
+void	transform_pos(t_data *data, t_pos *pos);
 /*utils*/
 t_pos	*ft_newpos(int x, int y, int z);
 /*handler*/

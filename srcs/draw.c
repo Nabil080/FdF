@@ -6,26 +6,19 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 21:11:06 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:23:31 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	put_pixel(t_data *data, t_pos *pos, int spacing)
+void	put_pixel(t_data *data, t_pos *pos)
 {
 	char	*pixel;
 	int		color;
 	int		offset;
 
 	color = get_color(pos->z);
-	if (spacing)
-	{
-		pos->x *= data->zoom;
-		pos->y *= data->zoom;
-		// iso(&pos->x, &pos->y, pos->z);
-		center(data, pos, data->zoom);
-	}
 	if (pos->x > data->width - 1
 		|| pos->y > data->height - 1)
 		return ;
@@ -48,7 +41,8 @@ void	draw_points(t_data *data)
 		x = 0;
 		while (x < data->map->width)
 		{
-			put_pixel(data, data->map->pos[y][x], data->zoom);
+			transform_pos(data, data->map->pos[y][x]);
+			put_pixel(data, data->map->pos[y][x]);
 			x++;
 		}
 		y++;
