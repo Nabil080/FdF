@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 18:42:21 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/07 20:49:17 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,43 +51,30 @@ int	key_hook(int keycode, t_data *data)
 {
 	if (keycode == ESC)
 		exit_success(data);
+	if (keycode == ' ')
+	{
+		data->x = 0;
+		data->spacing = get_default_zoom(data);
+	}
 	if (keycode == 'w')
-	{
-		data->y += 20;
-		redraw_img(data);
-	}
+		data->y += 50;
 	if (keycode == 'a')
-	{
-		data->x += 20;
-		redraw_img(data);
-	}
+		data->x += 50;
 	if (keycode == 's')
-	{
-		data->y -= 20;
-		redraw_img(data);
-	}
+		data->y -= 50;
 	if (keycode == 'd')
-	{
-		data->x -= 20;
-		redraw_img(data);
-	}
+		data->x -= 50;
+	redraw_img(data);
 	return (0);
 }
 
 int	mouse_hook(int button, int x, int y, t_data *data)
 {
-	if (button == 1)
-		ft_printf("x: %d, y: %d\n", x, y);
 	if (button == 4)
-	{
-		data->spacing += 1;
-		redraw_img(data);
-	}
+		data->spacing += 2;
 	if (button == 5 && data->spacing > 1)
-	{
-		data->spacing -= 1;
-		redraw_img(data);
-	}
+		data->spacing -= 2;
+	redraw_img(data);
 	x++;
 	y++;
 	return (0);
