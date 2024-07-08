@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 18:52:45 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 19:54:17 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,17 @@ static void	manage_projection(int keycode, t_data *data)
 	if (keycode == ISO_VIEW)
 		data->projection = ISO;
 	if (keycode == TOP_VIEW || keycode == FRONT_VIEW || keycode == SIDE_VIEW)
-		data->projection = ORTHO;
-	if (keycode == TOP_VIEW)
 	{
+		data->projection = ORTHO;
 		data->alpha = 0;
 		data->tetha = 0;
 		data->gamma = 0;
 	}
 	if (keycode == FRONT_VIEW)
-	{
-		data->alpha = 0.90;
-		data->tetha = 0;
-		data->gamma = 0;
-	}
+		data->alpha = 1.60;
 	if (keycode == SIDE_VIEW)
 	{
-		data->alpha = 0;
-		data->tetha = 0.90;
-		data->gamma = -0.90;
+		data->tetha = 1.60;
+		data->gamma = -1.60;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:41:18 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 17:51:19 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 19:55:49 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	reset_img(t_data *data)
 	data->gamma = 0;
 	data->alpha = 0;
 	data->x = 0;
+	data->projection = ISO;
 	data->zoom = get_default_zoom(data);
 }
