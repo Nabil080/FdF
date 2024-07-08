@@ -6,19 +6,19 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 17:23:49 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 18:59:05 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	iso(t_data *data, t_pos *pos)
+static void	iso(t_pos *pos)
 {
 	int	old_x;
 
 	old_x = pos->x;
-	pos->x = (old_x - pos->y) * cos(ANGLE);
-	pos->y = (old_x + pos->y) * sin(ANGLE) - (pos->z * data->zoom);
+	pos->x = (old_x - pos->y) * cos(0.523599);
+	pos->y = (old_x + pos->y) * sin(0.523599) - pos->z;
 }
 
 static void	center(t_data *data, t_pos *pos)
@@ -55,8 +55,10 @@ void	transform_pos(t_data *data, t_pos *pos)
 {
 	pos->x *= data->zoom;
 	pos->y *= data->zoom;
+	pos->z *= data->zoom;
 	center(data, pos);
-	iso(data, pos);
+	if (data->projection == ISO)
+		iso(pos);
 	rotate_xyz(data, pos);
 	translate(data, pos);
 	return ;

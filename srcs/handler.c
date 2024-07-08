@@ -6,11 +6,47 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 17:49:19 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 18:52:45 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	manage_translate(int keycode, t_data *data);
+
+static void	manage_rotate(int keycode, t_data *data);
+
+static void	manage_projection(int keycode, t_data *data);
+
+int	key_hook(int keycode, t_data *data)
+{
+	if (keycode == EXIT_KEY)
+		mlx_loop_end(data->mlx);
+	if (keycode == RESET_KEY)
+		reset_img(data);
+	manage_translate(keycode, data);
+	manage_rotate(keycode, data);
+	manage_projection(keycode, data);
+	if (!redraw_img(data))
+	{
+		free_map(data->map);
+		free_data(data);
+		exit_error("An allocation failed");
+	}
+	return (0);
+}
+
+int	mouse_hook(int button, int x, int y, t_data *data)
+{
+	if (button == 4)
+		data->zoom += 2;
+	if (button == 5 && data->zoom > 1)
+		data->zoom -= 2;
+	redraw_img(data);
+	x++;
+	y++;
+	return (0);
+}
 
 static void	manage_translate(int keycode, t_data *data)
 {
@@ -34,31 +70,28 @@ static void	manage_rotate(int keycode, t_data *data)
 		data->gamma += ANGLE_INCREMENT;
 }
 
-int	key_hook(int keycode, t_data *data)
+static void	manage_projection(int keycode, t_data *data)
 {
-	if (keycode == EXIT_KEY)
-		mlx_loop_end(data->mlx);
-	if (keycode == RESET_KEY)
-		reset_img(data);
-	manage_translate(keycode, data);
-	manage_rotate(keycode, data);
-	if (!redraw_img(data))
+	if (keycode == ISO_VIEW)
+		data->projection = ISO;
+	if (keycode == TOP_VIEW || keycode == FRONT_VIEW || keycode == SIDE_VIEW)
+		data->projection = ORTHO;
+	if (keycode == TOP_VIEW)
 	{
-		free_map(data->map);
-		free_data(data);
-		exit_error("An allocation failed");
+		data->alpha = 0;
+		data->tetha = 0;
+		data->gamma = 0;
 	}
-	return (0);
-}
-
-int	mouse_hook(int button, int x, int y, t_data *data)
-{
-	if (button == 4)
-		data->zoom += 2;
-	if (button == 5 && data->zoom > 1)
-		data->zoom -= 2;
-	redraw_img(data);
-	x++;
-	y++;
-	return (0);
+	if (keycode == FRONT_VIEW)
+	{
+		data->alpha = 0.90;
+		data->tetha = 0;
+		data->gamma = 0;
+	}
+	if (keycode == SIDE_VIEW)
+	{
+		data->alpha = 0;
+		data->tetha = 0.90;
+		data->gamma = -0.90;
+	}
 }
