@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:09:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/04 18:09:43 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 17:50:18 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	free_data(t_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->img)
 	{
-		mlx_destroy_image(data->mlx, data->img->img);
+		if (data->img->img)
+			mlx_destroy_image(data->mlx, data->img->img);
 		free(data->img);
 	}
 	mlx_destroy_display(data->mlx);

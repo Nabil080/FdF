@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 20:41:11 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 17:44:23 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,31 @@ t_data	*init_data(t_map *map);
 
 void	*init_mlx(t_data *data);
 
-int	get_default_zoom(t_data *data);
+int		get_default_zoom(t_data *data);
 
-int	get_highest_pos(t_map *map);
+int		get_highest_pos(t_map *map);
 /*draw*/
-void	put_pixel(t_data *data, t_pos *pos);
+void	put_pixel(t_data data, t_pos pos);
 
-void	draw_points(t_data *data);
+void	transform_points(t_data *data);
 
-void	draw_lines(t_data *data);
+void	draw_lines(t_data data);
 /*draw utils*/
-void	draw_line(t_data *data, t_pos a, t_pos b);
+void	draw_line(t_data data, t_pos a, t_pos b);
 /*convert*/
-int		get_color(int z);
-
 void	transform_pos(t_data *data, t_pos *pos);
 /*utils*/
 t_pos	*ft_newpos(int x, int y, int z);
+
+void	show_inputs(t_data data);
 /*handler*/
 int		key_hook(int keycode, t_data *data);
 
 int		mouse_hook(int button, int x, int y, t_data *data);
+/*handler utils*/
+void	reset_img(t_data *data);
+
+void	*redraw_img(t_data *data);
 /*debug*/
 void	show_map(t_map *map);
 

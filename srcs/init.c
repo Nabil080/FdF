@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 21:30:35 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 17:30:05 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ int	get_highest_pos(t_map *map)
 
 int	get_default_zoom(t_data *data)
 {
-	int	spacing;
+	int	zoom;
 	int	highest;
 
 	highest = get_highest_pos(data->map);
 	if (data->map->width > data->map->height)
-		spacing = (data->width / (data->map->width + highest));
+		zoom = (data->width / (data->map->width + highest));
 	else
-		spacing = (data->height / (data->map->height + highest));
-	data->y = spacing * highest / 2;
-	return (spacing);
+		zoom = (data->height / (data->map->height + highest));
+	data->y = zoom * highest / 2;
+	return (zoom);
 }
 
 t_data	*init_data(t_map *map)
@@ -71,7 +71,7 @@ t_data	*init_data(t_map *map)
 	data->tetha = 0;
 	data->x = 0;
 	data->y = 0;
-	data->spacing = get_default_zoom(data);
+	data->zoom = get_default_zoom(data);
 	return (data);
 }
 

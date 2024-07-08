@@ -22,9 +22,10 @@ SRCS_NAMES =	main.c \
 				parsing.c \
 				init.c \
 				handler.c \
+				handler_utils.c \
 				draw.c \
 				draw_utils.c \
-				convert.c \
+				transform_pos.c \
 				utils.c \
 				debug.c
 
@@ -87,4 +88,3 @@ long : all
 
 error : all
 	./${NAME} invalid.fdf
-

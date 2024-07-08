@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/07 21:27:42 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 17:38:42 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 # define TITLE "Filu de Feru"
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
-# define DEFAULT_ZOOM 1
 # define ANGLE 0.523599
+/*INCREMENTS*/
+# define TRANSLATE_INCREMENT 50
+# define ANGLE_INCREMENT 0.1
 /*keys*/
-# define Q 113
 # define ESC 65307
+# define EXIT_KEY ESC
+# define RESET_KEY ' '
 /*colors*/
 # define GREEN 0x0000FF00
 # define WHITE 0xFFFFFFFF
@@ -48,16 +51,15 @@ typedef struct s_img {
 	int		endian;
 }t_img;
 typedef struct t_data{
-	t_map	*map;
-	void	*mlx;
-	void	*win;
-	t_img	*img;
-	int		width;
-	int		height;
-	int		spacing;
-	int		zoom;
-	int		x;
-	int		y;
+	t_map		*map;
+	void		*mlx;
+	void		*win;
+	t_img		*img;
+	int			width;
+	int			height;
+	int			zoom;
+	int			x;
+	int			y;
 	double		alpha;
 	double		gamma;
 	double		tetha;
