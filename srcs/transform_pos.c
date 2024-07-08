@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 18:59:05 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 19:48:04 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	center(t_data *data, t_pos *pos)
 
 static void	translate(t_data *data, t_pos *pos)
 {
-	pos->x += (data->width / 2) + data->x;
+	pos->x += data->x;
 	pos->y += data->y;
 }
 
@@ -60,6 +60,8 @@ void	transform_pos(t_data *data, t_pos *pos)
 	if (data->projection == ISO)
 		iso(pos);
 	rotate_xyz(data, pos);
+	if (data->projection == ISO)
+		pos->x += (data->width / 2);
 	translate(data, pos);
 	return ;
 }
