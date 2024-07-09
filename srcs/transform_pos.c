@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:09:58 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 19:48:04 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:10:20 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,19 @@ static void	iso(t_pos *pos)
 	pos->y = (old_x + pos->y) * sin(0.523599) - pos->z;
 }
 
-static void	center(t_data *data, t_pos *pos)
+static void	zoom(t_data data, t_pos *pos)
 {
-	pos->x += (data->width / 2);
-	pos->y += (data->height / 2);
-	pos->x -= ((data->map->width - 1) * data->zoom) / 2;
-	pos->y -= ((data->map->height - 1) * data->zoom) / 2;
+	pos->x *= data.zoom;
+	pos->y *= data.zoom;
+	pos->z *= data.zoom;
 }
 
-static void	translate(t_data *data, t_pos *pos)
+static void	translate(t_data data, t_pos *pos)
 {
-	pos->x += data->x;
-	pos->y += data->y;
+	if (data.projection == ISO)
+		pos->x += (data.width / 2);
+	pos->x += data.x;
+	pos->y += data.y;
 }
 
 static void	rotate_xyz(t_data *data, t_pos *pos)
@@ -53,15 +54,14 @@ static void	rotate_xyz(t_data *data, t_pos *pos)
 
 void	transform_pos(t_data *data, t_pos *pos)
 {
-	pos->x *= data->zoom;
-	pos->y *= data->zoom;
-	pos->z *= data->zoom;
-	center(data, pos);
+	zoom(*data, pos);
+	pos->x += (data->width / 2);
+	pos->y += (data->height / 2);
+	pos->x -= ((data->map->width - 1) * data->zoom) / 2;
+	pos->y -= ((data->map->height - 1) * data->zoom) / 2;
 	if (data->projection == ISO)
 		iso(pos);
 	rotate_xyz(data, pos);
-	if (data->projection == ISO)
-		pos->x += (data->width / 2);
-	translate(data, pos);
+	translate(*data, pos);
 	return ;
 }

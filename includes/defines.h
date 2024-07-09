@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 19:58:31 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 00:25:31 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define ORTHO 1
 /*colors*/
 # define GREEN 0x0000FF00
+# define BLUE 0x000000FF
 # define WHITE 0xFFFFFFFF
 
 /*structs*/
@@ -40,6 +41,7 @@ typedef struct s_pos{
 	int	x;
 	int	y;
 	int	z;
+	int	color;
 }t_pos;
 
 typedef struct s_map{

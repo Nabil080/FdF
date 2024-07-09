@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 19:54:17 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:43:36 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 {
 	if (button == 4)
 		data->zoom += 2;
-	if (button == 5 && data->zoom > 1)
+	if (button == 5 && data->zoom > 2)
 		data->zoom -= 2;
 	redraw_img(data);
 	x++;

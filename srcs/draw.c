@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 18:44:04 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 00:25:45 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ void	put_pixel(t_data data, t_pos pos)
 	offset = (pos.y * data.img->line_length + pos.x
 			* (data.img->bits_per_pixel / 8));
 	pixel = data.img->addr + offset;
-	if (pos.z > 0)
-		*(unsigned int *)pixel = GREEN;
-	else
-		*(unsigned int *)pixel = WHITE;
+	*(unsigned int *)pixel = pos.color;
 }
 
 void	transform_points(t_data *data)
