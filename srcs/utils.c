@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:54:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 19:53:20 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:45:55 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,20 @@ void	show_inputs(t_data data)
 	show_input(data, "Move : W(up) A(left) S(down) D(right)");
 	show_input(data, "Rotate axis : Z(x) X(y) V(z)");
 	show_input(data, "Projection iso : 0");
-	show_input(data, "Projection ortho : 1(top), 2(front), 3(side)");
-	// show_input(data, "Projection orthographic :");
+	show_input(data, "Projection ortho : 1(top), 2(front), 3(right side)");
 	show_input(data, NULL);
+}
+
+static int	get_color(int z)
+{
+	int	color;
+
+	color = WHITE;
+	if (z > 0)
+		color = (GREEN);
+	if (z < 0)
+		color = (BLUE);
+	return (color);
 }
 
 t_pos	*ft_newpos(int x, int y, int z)
@@ -48,5 +59,6 @@ t_pos	*ft_newpos(int x, int y, int z)
 	pos->x = x;
 	pos->y = y;
 	pos->z = z;
+	pos->color = get_color(z);
 	return (pos);
 }

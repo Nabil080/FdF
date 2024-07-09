@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:41:18 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 19:55:49 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:04:10 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	reset_pos(t_map *map)
 
 void	*redraw_img(t_data *data)
 {
-	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img->img);
 	data->img->img = mlx_new_image(data->mlx, data->width, data->height);
 	if (!data->img->img)
