@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 04:47:09 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 05:52:50 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_data	*init_data(t_map *map)
 	data->width = WINDOW_WIDTH;
 	data->mlx = NULL;
 	data->win = NULL;
+	data->inputs = -1;
 	data->alpha = 0;
 	data->gamma = 0;
 	data->tetha = 0;

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:35:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 00:50:09 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 06:10:54 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ t_pos	*ft_newpos(int x, int y, int z);
 
 void	show_inputs(t_data data);
 
-int	get_lowest_pos(t_map *map);
+int		get_lowest_pos(t_map *map);
 
-int	get_highest_pos(t_map *map);
+int		get_highest_pos(t_map *map);
 /*handler*/
 int		key_hook(int keycode, t_data *data);
 

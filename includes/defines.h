@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 04:01:39 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 06:08:05 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,20 @@
 # define ANGLE_INCREMENT 0.1
 /*keys*/
 # define ESC 65307
-# define ISO_VIEW 65438
-# define TOP_VIEW 65436
-# define FRONT_VIEW 65433
-# define SIDE_VIEW 65435
+# define ENTER 65293
+# define ENTER_PAD 65421
+# define ONE 65436
+# define THREE 65435
+# define FOUR 65430
+# define SIX 65432
+# define SEVEN 65429
+# define NINE 65434
+# define PLUS 65451
+# define MINUS 65453
+# define ISO_VIEW 'i'
+# define TOP_VIEW 't'
+# define FRONT_VIEW 'f'
+# define SIDE_VIEW 'r'
 # define EXIT_KEY ESC
 # define RESET_KEY ' '
 /*projections*/
@@ -84,6 +94,7 @@ typedef struct t_data{
 	double		gamma;
 	double		tetha;
 	int			projection;
+	int			inputs;
 }t_data;
 
 typedef struct s_bresenham{

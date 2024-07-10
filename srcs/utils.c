@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:54:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 02:34:51 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 06:05:01 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,19 @@ static void	show_input(t_data data, char *str)
 
 void	show_inputs(t_data data)
 {
-	show_input(data, "Exit : Escape");
-	show_input(data, "Reset : Spacebar");
-	show_input(data, "Zoom : Mouse wheel");
-	show_input(data, "Move : W(up) A(left) S(down) D(right)");
-	show_input(data, "Rotate axis : Z(x) X(y) V(z)");
-	show_input(data, "Projection iso : 0");
-	show_input(data, "Projection ortho : 1(top), 2(front), 3(right side)");
+	if (data.inputs < 0)
+		show_input(data, "---------- Inputs | Press Enter to show ----------");
+	else
+	{
+		show_input(data, "---------- Inputs | Press Enter to hide ----------");
+		show_input(data, "Exit : Escape");
+		show_input(data, "Reset : Spacebar");
+		show_input(data, "Zoom : Scroll up/down or -/+");
+		show_input(data, "Move : W(up) A(left) S(down) D(right)");
+		show_input(data, "Rotate : 1/3(x) 4/6(y) 7/9(z)");
+		show_input(data, "Projection iso : I");
+		show_input(data, "Projection ortho : T(top), F(front), R(right side)");
+	}
 	show_input(data, NULL);
 }
 
