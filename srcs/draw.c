@@ -6,11 +6,41 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 00:25:45 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 02:49:10 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	get_color(t_data data, int z)
+{
+	int	threshold;
+
+	threshold = (data.map->highest - data.map->lowest) / 10;
+	if (!threshold)
+		threshold++;
+	if (z >= data.map->lowest + threshold * 9)
+		return (GRADIENT_9);
+	if (z >=  data.map->lowest + threshold * 8)
+		return (GRADIENT_8);
+	if (z >=  data.map->lowest + threshold * 7)
+		return (GRADIENT_7);
+	if (z >=  data.map->lowest + threshold * 6)
+		return (GRADIENT_6);
+	if (z >=  data.map->lowest + threshold * 5)
+		return (GRADIENT_5);
+	if (z >=  data.map->lowest + threshold * 4)
+		return (GRADIENT_4);
+	if (z >=  data.map->lowest + threshold * 3)
+		return (GRADIENT_3);
+	if (z >=  data.map->lowest + threshold * 2)
+		return (GRADIENT_2);
+	if (z >=  data.map->lowest + threshold * 1)
+		return (GRADIENT_1);
+	if (z >=  data.map->lowest + threshold * 0)
+		return (GRADIENT_0);
+	return (WHITE);
+}
 
 void	put_pixel(t_data data, t_pos pos)
 {
@@ -25,7 +55,7 @@ void	put_pixel(t_data data, t_pos pos)
 	offset = (pos.y * data.img->line_length + pos.x
 			* (data.img->bits_per_pixel / 8));
 	pixel = data.img->addr + offset;
-	*(unsigned int *)pixel = pos.color;
+	*(unsigned int *)pixel = get_color(data, pos.old_z);
 }
 
 void	transform_points(t_data *data)

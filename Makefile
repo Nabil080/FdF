@@ -88,3 +88,9 @@ long : all
 
 error : all
 	./${NAME} invalid.fdf
+
+pylone : all
+	./${NAME} test_maps/pylone.fdf
+
+pyramide : all
+	./${NAME} test_maps/pyramide.fdf
