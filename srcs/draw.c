@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 05:00:31 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 06:10:42 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ static int	get_color(t_map map, int z)
 	threshold = (map.highest - map.lowest) / 10 + 1;
 	if (z >= map.highest)
 		return (GRADIENT_9);
-	if (z >=  map.lowest + threshold * 8)
+	if (z >= map.lowest + threshold * 8)
 		return (GRADIENT_8);
-	if (z >=  map.lowest + threshold * 7)
+	if (z >= map.lowest + threshold * 7)
 		return (GRADIENT_7);
-	if (z >=  map.lowest + threshold * 6)
+	if (z >= map.lowest + threshold * 6)
 		return (GRADIENT_6);
-	if (z >=  map.lowest + threshold * 5)
+	if (z >= map.lowest + threshold * 5)
 		return (GRADIENT_5);
-	if (z >=  map.lowest + threshold * 4)
+	if (z >= map.lowest + threshold * 4)
 		return (GRADIENT_4);
-	if (z >=  map.lowest + threshold * 3)
+	if (z >= map.lowest + threshold * 3)
 		return (GRADIENT_3);
-	if (z >=  map.lowest + threshold * 2)
+	if (z >= map.lowest + threshold * 2)
 		return (GRADIENT_2);
-	if (z >=  map.lowest + threshold * 1)
+	if (z >= map.lowest + threshold * 1)
 		return (GRADIENT_1);
 	return (GRADIENT_0);
 }
