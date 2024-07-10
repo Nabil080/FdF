@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 05:52:50 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 08:36:38 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ t_data	*init_data(t_map *map)
 	data->width = WINDOW_WIDTH;
 	data->mlx = NULL;
 	data->win = NULL;
-	data->inputs = -1;
+	data->inputs = 1;
+	data->gradient = 0;
 	data->alpha = 0;
 	data->gamma = 0;
 	data->tetha = 0;
 	data->x = 0;
-	data->y = 0;
 	data->zoom = get_default_zoom(data);
 	return (data);
 }

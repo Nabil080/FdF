@@ -27,6 +27,7 @@ SRCS_NAMES =	main.c \
 				draw_utils.c \
 				transform_pos.c \
 				utils.c \
+				colors.c \
 				debug.c
 
 SRCS_DIR = srcs/
