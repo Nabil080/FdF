@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:38:08 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 03:08:11 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 05:00:31 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ static int	get_color(t_map map, int z)
 {
 	int	threshold;
 
-	threshold = (map.highest - map.lowest) / 10;
-	if (!threshold)
-		threshold++;
-	if (z >= map.lowest + threshold * 9)
+	threshold = (map.highest - map.lowest) / 10 + 1;
+	if (z >= map.highest)
 		return (GRADIENT_9);
 	if (z >=  map.lowest + threshold * 8)
 		return (GRADIENT_8);
@@ -37,9 +35,7 @@ static int	get_color(t_map map, int z)
 		return (GRADIENT_2);
 	if (z >=  map.lowest + threshold * 1)
 		return (GRADIENT_1);
-	if (z >=  map.lowest + threshold * 0)
-		return (GRADIENT_0);
-	return (WHITE);
+	return (GRADIENT_0);
 }
 
 void	put_pixel(t_data data, t_pos pos)
