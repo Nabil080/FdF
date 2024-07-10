@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:54:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 06:05:01 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 08:29:28 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	show_inputs(t_data data)
 		show_input(data, "Rotate : 1/3(x) 4/6(y) 7/9(z)");
 		show_input(data, "Projection iso : I");
 		show_input(data, "Projection ortho : T(top), F(front), R(right side)");
+		show_input(data, "Change color : C");
 	}
 	show_input(data, NULL);
 }

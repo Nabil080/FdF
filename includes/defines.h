@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 06:08:05 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 08:27:30 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,50 @@
 /*colors*/
 # define WHITE 0xFFFFFFFF
 # define ORANGE 0xFFFFA500
-# define GRADIENT_0 0xFF70c2db
-# define GRADIENT_1 0xFF67cadb
-# define GRADIENT_2 0xFF60d1d8
-# define GRADIENT_3 0xFF5ed8d2
-# define GRADIENT_4 0xFF61decb
-# define GRADIENT_5 0xFF6ae4c1
-# define GRADIENT_6 0xFF79e9b5
-# define GRADIENT_7 0xFF8beea9
-# define GRADIENT_8 0xFF9ff19c
-# define GRADIENT_9 0xFFb6f490
+
+# define GREEN_0 0xFF70c2db
+# define GREEN_1 0xFF67cadb
+# define GREEN_2 0xFF60d1d8
+# define GREEN_3 0xFF5ed8d2
+# define GREEN_4 0xFF61decb
+# define GREEN_5 0xFF6ae4c1
+# define GREEN_6 0xFF79e9b5
+# define GREEN_7 0xFF8beea9
+# define GREEN_8 0xFF9ff19c
+# define GREEN_9 0xFFb6f490
+
+# define RED_0 0xFFe4bcbf
+# define RED_1 0xFFecb0b2
+# define RED_2 0xFFf3a4a4
+# define RED_3 0xFFf89894
+# define RED_4 0xFFfc8d82
+# define RED_5 0xFFfe816f
+# define RED_6 0xFFfe765b
+# define RED_7 0xFFfd6c45
+# define RED_8 0xFFfa622b
+# define RED_9 0xFFf55a00
+
+# define BLUE_0 0xFF4b9b7f
+# define BLUE_1 0xFF428f77
+# define BLUE_2 0xFF39836f
+# define BLUE_3 0xFF317666
+# define BLUE_4 0xFF296b5e
+# define BLUE_5 0xFF225f55
+# define BLUE_6 0xFF1b544c
+# define BLUE_7 0xFF154843
+# define BLUE_8 0xFF0f3e3a
+# define BLUE_9 0xFF0a3331
+
+# define PURPLE_0 0xFFe37dd9
+# define PURPLE_1 0xFFd16fca
+# define PURPLE_2 0xFFbf62ba
+# define PURPLE_3 0xFFae54ab
+# define PURPLE_4 0xFF9c479c
+# define PURPLE_5 0xFF8b3a8e
+# define PURPLE_6 0xFF7b2d7f
+# define PURPLE_7 0xFF6a2071
+# define PURPLE_8 0xFF5b1263
+# define PURPLE_9 0xFF4b0255
 
 /*structs*/
 typedef struct s_pos{
@@ -95,6 +129,7 @@ typedef struct t_data{
 	double		tetha;
 	int			projection;
 	int			inputs;
+	int			gradient;
 }t_data;
 
 typedef struct s_bresenham{

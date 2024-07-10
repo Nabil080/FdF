@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 06:25:07 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 06:10:22 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 08:34:43 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ int	key_hook(int keycode, t_data *data)
 		reset_img(data);
 	if (keycode == ENTER || keycode == ENTER_PAD)
 		data->inputs *= -1;
+	if (keycode == 'c')
+		data->gradient++;
 	manage_zoom(keycode, data);
 	manage_translate(keycode, data);
 	manage_rotate(keycode, data);
 	manage_projection(keycode, data);
-	ft_printf("%d\n", keycode);
 	if (!redraw_img(data))
 	{
 		free_map(data->map);
