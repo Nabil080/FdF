@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 08:27:30 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 10:04:29 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,17 @@
 # define PURPLE_8 0xFF5b1263
 # define PURPLE_9 0xFF4b0255
 
+# define RANDOM_0 0xFFffffff
+# define RANDOM_1 0xFFd4d5ba
+# define RANDOM_2 0xFFeee6cd
+# define RANDOM_3 0xFF99c637
+# define RANDOM_4 0xFFced6ba
+# define RANDOM_5 0xFF889d72
+# define RANDOM_6 0xFFb5a18f
+# define RANDOM_7 0xFFbcaead
+# define RANDOM_8 0xFFb07a57
+# define RANDOM_9 0xFF5ad88e
+
 /*structs*/
 typedef struct s_pos{
 	int	x;
@@ -137,6 +148,9 @@ typedef struct s_bresenham{
 	int	dy;
 	int	i;
 	int	d;
+	int	threshold;
+	int	iteration;
+	int	z_diff;
 }t_vars;
 
 #endif
