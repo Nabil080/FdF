@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:54:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 21:45:55 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 02:34:51 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	show_input(t_data data, char *str)
 		y = 20;
 		return ;
 	}
-	mlx_string_put(data.mlx, data.win, 10, y, GREEN, str);
+	mlx_string_put(data.mlx, data.win, 10, y, ORANGE, str);
 	y += 20;
 }
 
@@ -37,16 +37,48 @@ void	show_inputs(t_data data)
 	show_input(data, NULL);
 }
 
-static int	get_color(int z)
+int	get_lowest_pos(t_map *map)
 {
-	int	color;
+	int	x;
+	int	y;
+	int	lowest;
 
-	color = WHITE;
-	if (z > 0)
-		color = (GREEN);
-	if (z < 0)
-		color = (BLUE);
-	return (color);
+	lowest = map->pos[0][0]->old_z;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (map->pos[y][x]->old_z < lowest)
+				lowest = map->pos[y][x]->old_z;
+			x++;
+		}
+		y++;
+	}
+	return (lowest);
+}
+
+int	get_highest_pos(t_map *map)
+{
+	int	x;
+	int	y;
+	int	highest;
+
+	highest = map->pos[0][0]->old_z;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (map->pos[y][x]->old_z > highest)
+				highest = map->pos[y][x]->old_z;
+			x++;
+		}
+		y++;
+	}
+	return (highest);
 }
 
 t_pos	*ft_newpos(int x, int y, int z)
@@ -59,6 +91,6 @@ t_pos	*ft_newpos(int x, int y, int z)
 	pos->x = x;
 	pos->y = y;
 	pos->z = z;
-	pos->color = get_color(z);
+	pos->old_z = z;
 	return (pos);
 }

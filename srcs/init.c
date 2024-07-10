@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 00:41:00 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 02:48:13 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,58 +60,14 @@ void	*init_mlx(t_data *data)
 	return (data);
 }
 
-static int	get_lowest_pos(t_map *map)
-{
-	int	x;
-	int	y;
-	int	lowest;
-
-	lowest = map->pos[0][0]->z;
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			if (map->pos[y][x]->z < lowest)
-				lowest = map->pos[y][x]->z;
-			x++;
-		}
-		y++;
-	}
-	return (lowest);
-}
-
-static int	get_highest_pos(t_map *map)
-{
-	int	x;
-	int	y;
-	int	highest;
-
-	highest = map->pos[0][0]->z;
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			if (map->pos[y][x]->z > highest)
-				highest = map->pos[y][x]->z;
-			x++;
-		}
-		y++;
-	}
-	return (highest);
-}
-
 int	get_default_zoom(t_data *data)
 {
 	int	zoom;
 	int	highest;
 	int	lowest;
 
-	highest = get_highest_pos(data->map);
-	lowest = get_lowest_pos(data->map);
+	highest = data->map->highest;
+	lowest = data->map->lowest;
 	if (data->map->width > data->map->height)
 		zoom = (data->width / (data->map->width + (highest - lowest)));
 	else

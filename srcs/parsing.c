@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:30:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/08 17:08:00 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 02:47:40 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ t_map	*get_map(char *file)
 		free_map(map);
 		exit_error("An allocation failed");
 	}
+	map->highest = get_highest_pos(map);
+	map->lowest = get_lowest_pos(map);
 	ft_lstclear(&lines, free);
 	return (map);
 }

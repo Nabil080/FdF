@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 00:25:31 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 02:34:00 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,30 @@
 # define ISO 0
 # define ORTHO 1
 /*colors*/
-# define GREEN 0x0000FF00
-# define BLUE 0x000000FF
 # define WHITE 0xFFFFFFFF
+# define ORANGE 0xFFFFA500
+# define GRADIENT_0 0xFF292f56
+# define GRADIENT_1 0xFF1e4572
+# define GRADIENT_2 0xFF005c8b
+# define GRADIENT_3 0xFF007498
+# define GRADIENT_4 0xFF008ba0
+# define GRADIENT_5 0xFF00a3a4
+# define GRADIENT_6 0xFF00bca1
+# define GRADIENT_7 0xFF00d493
+# define GRADIENT_8 0xFF69e882
+# define GRADIENT_9 0xFFacfa70
 
 /*structs*/
 typedef struct s_pos{
 	int	x;
 	int	y;
 	int	z;
-	int	color;
+	int	old_z;
 }t_pos;
 
 typedef struct s_map{
+	int		highest;
+	int		lowest;
 	int		height;
 	int		width;
 	int		**tab;
