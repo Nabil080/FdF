@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 04:59:25 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 02:48:13 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 04:28:59 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	get_default_zoom(t_data *data)
 		zoom = (data->width / (data->map->width + (highest - lowest)));
 	else
 		zoom = (data->height / (data->map->height + (highest - lowest)));
-	data->y += zoom * (highest) / 2;
-	data->y += zoom * (lowest) / 2;
+	data->y = zoom * (highest) / 2;
+	data->y -= zoom * (lowest) / 2;
 	return (zoom);
 }

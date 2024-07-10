@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/07/10 02:34:00 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/07/10 04:01:39 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@
 /*colors*/
 # define WHITE 0xFFFFFFFF
 # define ORANGE 0xFFFFA500
-# define GRADIENT_0 0xFF292f56
-# define GRADIENT_1 0xFF1e4572
-# define GRADIENT_2 0xFF005c8b
-# define GRADIENT_3 0xFF007498
-# define GRADIENT_4 0xFF008ba0
-# define GRADIENT_5 0xFF00a3a4
-# define GRADIENT_6 0xFF00bca1
-# define GRADIENT_7 0xFF00d493
-# define GRADIENT_8 0xFF69e882
-# define GRADIENT_9 0xFFacfa70
+# define GRADIENT_0 0xFF70c2db
+# define GRADIENT_1 0xFF67cadb
+# define GRADIENT_2 0xFF60d1d8
+# define GRADIENT_3 0xFF5ed8d2
+# define GRADIENT_4 0xFF61decb
+# define GRADIENT_5 0xFF6ae4c1
+# define GRADIENT_6 0xFF79e9b5
+# define GRADIENT_7 0xFF8beea9
+# define GRADIENT_8 0xFF9ff19c
+# define GRADIENT_9 0xFFb6f490
 
 /*structs*/
 typedef struct s_pos{
