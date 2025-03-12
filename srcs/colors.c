@@ -12,15 +12,15 @@
 
 #include "fdf.h"
 
-static void	red(int *gradient);
+static void red(int *gradient);
 
-static void	green(int *gradient);
+static void green(int *gradient);
 
-static void	blue(int *gradient);
+static void blue(int *gradient);
 
-static void	purple(int *gradient);
+static void purple(int *gradient);
 
-void	get_gradient(t_data data, int *gradient)
+void		get_gradient(t_data data, int *gradient)
 {
 	if (data.gradient % 10 == 0)
 		green(gradient);
@@ -44,7 +44,7 @@ void	get_gradient(t_data data, int *gradient)
 		red(gradient);
 }
 
-static void	green(int *gradient)
+static void green(int *gradient)
 {
 	gradient[0] = GREEN_0;
 	gradient[1] = GREEN_1;
@@ -58,7 +58,7 @@ static void	green(int *gradient)
 	gradient[9] = GREEN_9;
 }
 
-static void	red(int *gradient)
+static void red(int *gradient)
 {
 	gradient[0] = RED_0;
 	gradient[1] = RED_1;
@@ -72,7 +72,7 @@ static void	red(int *gradient)
 	gradient[9] = RED_9;
 }
 
-static void	blue(int *gradient)
+static void blue(int *gradient)
 {
 	gradient[0] = BLUE_0;
 	gradient[1] = BLUE_1;
@@ -86,7 +86,7 @@ static void	blue(int *gradient)
 	gradient[9] = BLUE_9;
 }
 
-static void	purple(int *gradient)
+static void purple(int *gradient)
 {
 	gradient[0] = PURPLE_0;
 	gradient[1] = PURPLE_1;

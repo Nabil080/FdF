@@ -12,20 +12,20 @@
 
 #include "fdf.h"
 
-static void	show_input(t_data data, char *str)
+static void show_input(t_data data, char *str)
 {
-	static int	y = 20;
+	static int y = 20;
 
 	if (!str)
 	{
 		y = 20;
-		return ;
+		return;
 	}
 	mlx_string_put(data.mlx, data.win, 10, y, ORANGE, str);
 	y += 20;
 }
 
-void	show_inputs(t_data data)
+void show_inputs(t_data data)
 {
 	if (data.inputs < 0)
 		show_input(data, "---------- Inputs | Press Enter to show ----------");
@@ -44,11 +44,11 @@ void	show_inputs(t_data data)
 	show_input(data, NULL);
 }
 
-int	get_lowest_pos(t_map *map)
+int get_lowest_pos(t_map *map)
 {
-	int	x;
-	int	y;
-	int	lowest;
+	int x;
+	int y;
+	int lowest;
 
 	lowest = map->pos[0][0]->old_z;
 	y = 0;
@@ -66,11 +66,11 @@ int	get_lowest_pos(t_map *map)
 	return (lowest);
 }
 
-int	get_highest_pos(t_map *map)
+int get_highest_pos(t_map *map)
 {
-	int	x;
-	int	y;
-	int	highest;
+	int x;
+	int y;
+	int highest;
 
 	highest = map->pos[0][0]->old_z;
 	y = 0;
@@ -88,9 +88,9 @@ int	get_highest_pos(t_map *map)
 	return (highest);
 }
 
-t_pos	*ft_newpos(int x, int y, int z)
+t_pos *ft_newpos(int x, int y, int z)
 {
-	t_pos	*pos;
+	t_pos *pos;
 
 	pos = malloc(sizeof(t_pos));
 	if (!pos)

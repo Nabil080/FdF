@@ -12,23 +12,23 @@
 
 #include "fdf.h"
 
-static void	iso(t_pos *pos)
+static void iso(t_pos *pos)
 {
-	int	old_x;
+	int old_x;
 
 	old_x = pos->x;
 	pos->x = (old_x - pos->y) * cos(0.523599);
 	pos->y = (old_x + pos->y) * sin(0.523599) - pos->z;
 }
 
-static void	zoom(t_data data, t_pos *pos)
+static void zoom(t_data data, t_pos *pos)
 {
 	pos->x *= data.zoom;
 	pos->y *= data.zoom;
 	pos->z *= data.zoom;
 }
 
-static void	translate(t_data data, t_pos *pos)
+static void translate(t_data data, t_pos *pos)
 {
 	if (data.projection == ISO)
 		pos->x += (data.width / 2);
@@ -36,10 +36,10 @@ static void	translate(t_data data, t_pos *pos)
 	pos->y += data.y;
 }
 
-static void	rotate_xyz(t_data *data, t_pos *pos)
+static void rotate_xyz(t_data *data, t_pos *pos)
 {
-	int	old_y;
-	int	old_x;
+	int old_y;
+	int old_x;
 
 	old_y = pos->y;
 	pos->y = old_y * cos(data->alpha) - pos->z * sin(data->alpha);
@@ -52,7 +52,7 @@ static void	rotate_xyz(t_data *data, t_pos *pos)
 	pos->y = old_x * sin(data->gamma) + pos->y * cos(data->gamma);
 }
 
-void	transform_pos(t_data *data, t_pos *pos)
+void transform_pos(t_data *data, t_pos *pos)
 {
 	zoom(*data, pos);
 	pos->x += (data->width / 2);
@@ -63,5 +63,5 @@ void	transform_pos(t_data *data, t_pos *pos)
 		iso(pos);
 	rotate_xyz(data, pos);
 	translate(*data, pos);
-	return ;
+	return;
 }

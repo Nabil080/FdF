@@ -12,15 +12,15 @@
 
 #include "fdf.h"
 
-static void	manage_zoom(int keycode, t_data *data);
+static void manage_zoom(int keycode, t_data *data);
 
-static void	manage_translate(int keycode, t_data *data);
+static void manage_translate(int keycode, t_data *data);
 
-static void	manage_rotate(int keycode, t_data *data);
+static void manage_rotate(int keycode, t_data *data);
 
-static void	manage_projection(int keycode, t_data *data);
+static void manage_projection(int keycode, t_data *data);
 
-int	key_hook(int keycode, t_data *data)
+int			key_hook(int keycode, t_data *data)
 {
 	if (keycode == EXIT_KEY)
 		mlx_loop_end(data->mlx);
@@ -43,7 +43,7 @@ int	key_hook(int keycode, t_data *data)
 	return (0);
 }
 
-static void	manage_zoom(int keycode, t_data *data)
+static void manage_zoom(int keycode, t_data *data)
 {
 	if (keycode == PLUS)
 		data->zoom += 1;
@@ -51,7 +51,7 @@ static void	manage_zoom(int keycode, t_data *data)
 		data->zoom -= 1;
 }
 
-static void	manage_translate(int keycode, t_data *data)
+static void manage_translate(int keycode, t_data *data)
 {
 	if (keycode == 'w')
 		data->y += TRANSLATE_INCREMENT;
@@ -63,7 +63,7 @@ static void	manage_translate(int keycode, t_data *data)
 		data->x -= TRANSLATE_INCREMENT;
 }
 
-static void	manage_rotate(int keycode, t_data *data)
+static void manage_rotate(int keycode, t_data *data)
 {
 	if (keycode == ONE)
 		data->alpha -= ANGLE_INCREMENT;
@@ -79,7 +79,7 @@ static void	manage_rotate(int keycode, t_data *data)
 		data->gamma += ANGLE_INCREMENT;
 }
 
-static void	manage_projection(int keycode, t_data *data)
+static void manage_projection(int keycode, t_data *data)
 {
 	if (keycode == ISO_VIEW)
 		reset_img(data);
@@ -92,8 +92,7 @@ static void	manage_projection(int keycode, t_data *data)
 		data->gamma = 0;
 	}
 	if (keycode == FRONT_VIEW || keycode == SIDE_VIEW)
-		data->y = data->zoom * data->map->highest
-			+ data->zoom * data->map->height;
+		data->y = data->zoom * data->map->highest + data->zoom * data->map->height;
 	if (keycode == FRONT_VIEW)
 		data->alpha = 1.60;
 	if (keycode == SIDE_VIEW)

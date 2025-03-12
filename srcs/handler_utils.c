@@ -12,10 +12,10 @@
 
 #include "fdf.h"
 
-static void	reset_pos(t_map *map)
+static void reset_pos(t_map *map)
 {
-	int	x;
-	int	y;
+	int x;
+	int y;
 
 	y = 0;
 	while (y < map->height)
@@ -32,28 +32,24 @@ static void	reset_pos(t_map *map)
 	}
 }
 
-void	*redraw_img(t_data *data)
+void *redraw_img(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->img->img);
 	data->img->img = mlx_new_image(data->mlx, data->width, data->height);
 	if (!data->img->img)
 		return (NULL);
-	data->img->addr = mlx_get_data_addr(data->img->img,
-			&data->img->bits_per_pixel,
-			&data->img->line_length,
-			&data->img->endian);
+	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
 	if (!data->img->addr)
 		return (NULL);
 	reset_pos(data->map);
 	transform_points(data);
 	draw_lines(*data);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->img->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
 	show_inputs(*data);
 	return (data);
 }
 
-void	reset_img(t_data *data)
+void reset_img(t_data *data)
 {
 	reset_pos(data->map);
 	data->tetha = 0;
@@ -63,3 +59,4 @@ void	reset_img(t_data *data)
 	data->projection = ISO;
 	data->zoom = get_default_zoom(data);
 }
+
