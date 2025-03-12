@@ -12,10 +12,10 @@
 
 #include "fdf.h"
 
-void	show_map(t_map *map)
+void show_map(t_map *map)
 {
-	int	col;
-	int	row;
+	int col;
+	int row;
 
 	row = 0;
 	while (row < map->height)
@@ -39,11 +39,11 @@ void	show_map(t_map *map)
 	}
 }
 
-void	show_pos(t_map *map)
+void show_pos(t_map *map)
 {
-	int		col;
-	int		row;
-	t_pos	*pos;
+	int	   col;
+	int	   row;
+	t_pos *pos;
 
 	row = 0;
 	while (row < map->height)
@@ -52,8 +52,7 @@ void	show_pos(t_map *map)
 		while (col < map->width)
 		{
 			pos = map->pos[row][col];
-			ft_printf("pos[%d][%d]: (x:%d, y:%d, z:%d)\n",
-				row, col, pos->x, pos->y, pos->z);
+			ft_printf("pos[%d][%d]: (x:%d, y:%d, z:%d)\n", row, col, pos->x, pos->y, pos->z);
 			col++;
 		}
 		row++;

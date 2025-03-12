@@ -12,10 +12,10 @@
 
 #include "fdf.h"
 
-void	check_file(char *file)
+void check_file(char *file)
 {
-	int		fd;
-	char	buffer[1];
+	int	 fd;
+	char buffer[1];
 
 	if (ft_strlen(file) < 4)
 		exit_args();
@@ -24,27 +24,27 @@ void	check_file(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		close (fd);
+		close(fd);
 		exit_error("The file does not exist");
 	}
 	if (read(fd, 0, 0) < 0)
 	{
-		close (fd);
+		close(fd);
 		exit_error("The file cannot be read");
 	}
 	if (read(fd, buffer, 1) < 1)
 	{
-		close (fd);
+		close(fd);
 		exit_error("The file is empty");
 	}
-	close (fd);
+	close(fd);
 }
 
-static void	*get_map_size(t_map **map, t_list *lines)
+static void *get_map_size(t_map **map, t_list *lines)
 {
 	size_t	width;
 	size_t	height;
-	t_list	*current;
+	t_list *current;
 
 	width = ft_countwords(lines->content, " \n");
 	height = 0;
@@ -67,10 +67,10 @@ static void	*get_map_size(t_map **map, t_list *lines)
 	return (*map);
 }
 
-static void	*get_map_tab(t_map **map, t_list *lines)
+static void *get_map_tab(t_map **map, t_list *lines)
 {
-	int		**tab;
-	size_t	row;
+	int	 **tab;
+	size_t row;
 
 	tab = malloc((*map)->height * sizeof(int *));
 	if (!tab)
@@ -88,11 +88,11 @@ static void	*get_map_tab(t_map **map, t_list *lines)
 	return (*map);
 }
 
-static void	*get_map_pos(t_map **map)
+static void *get_map_pos(t_map **map)
 {
-	int		y;
-	int		x;
-	t_pos	***pos;
+	int		 y;
+	int		 x;
+	t_pos ***pos;
 
 	pos = malloc((*map)->height * sizeof(t_pos **));
 	if (!pos)
@@ -117,10 +117,10 @@ static void	*get_map_pos(t_map **map)
 	return (map);
 }
 
-t_map	*get_map(char *file)
+t_map *get_map(char *file)
 {
-	t_map	*map;
-	t_list	*lines;
+	t_map  *map;
+	t_list *lines;
 
 	map = NULL;
 	lines = get_lines(file);

@@ -12,9 +12,9 @@
 
 #include "fdf.h"
 
-static t_vars	get_bresenham_vars(t_pos a, t_pos b, int isLow)
+static t_vars get_bresenham_vars(t_pos a, t_pos b, int isLow)
 {
-	t_vars	vars;
+	t_vars vars;
 
 	vars.threshold = abs(b.y - a.y) / (abs(b.old_z - a.old_z) + 1);
 	vars.iteration = 0;
@@ -38,10 +38,10 @@ static t_vars	get_bresenham_vars(t_pos a, t_pos b, int isLow)
 	return (vars);
 }
 
-static void	bresenham_low_slope(t_data data, t_pos a, t_pos b)
+static void bresenham_low_slope(t_data data, t_pos a, t_pos b)
 {
-	t_pos	current;
-	t_vars	vars;
+	t_pos  current;
+	t_vars vars;
 
 	vars = get_bresenham_vars(a, b, 1);
 	current = a;
@@ -66,10 +66,10 @@ static void	bresenham_low_slope(t_data data, t_pos a, t_pos b)
 	}
 }
 
-static void	bresenham_high_slope(t_data data, t_pos a, t_pos b)
+static void bresenham_high_slope(t_data data, t_pos a, t_pos b)
 {
-	t_pos	current;
-	t_vars	vars;
+	t_pos  current;
+	t_vars vars;
 
 	vars = get_bresenham_vars(a, b, 0);
 	current = a;
@@ -94,9 +94,9 @@ static void	bresenham_high_slope(t_data data, t_pos a, t_pos b)
 	}
 }
 
-void	draw_line(t_data data, t_pos a, t_pos b)
+void draw_line(t_data data, t_pos a, t_pos b)
 {
-	t_pos	tmp;
+	t_pos tmp;
 
 	if (abs(b.y - a.y) < abs(b.x - a.x))
 	{

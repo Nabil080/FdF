@@ -11,17 +11,18 @@
 /* ************************************************************************** */
 
 #ifndef FDF_H
-# define FDF_H
+#define FDF_H
 
-# include <mlx.h>
-# include <math.h>
-# include "libft.h"
-# include "defines.h"
+#include "defines.h"
+#include "libft.h"
+
+#include <math.h>
+#include <mlx.h>
 
 /*parsing*/
 void	check_file(char *file);
 
-t_map	*get_map(char *file);
+t_map  *get_map(char *file);
 /*exit*/
 void	exit_args(void);
 
@@ -33,9 +34,9 @@ void	exit_success(t_data *data);
 
 void	free_map(t_map *map);
 /*init*/
-t_data	*init_data(t_map *map);
+t_data *init_data(t_map *map);
 
-void	*init_mlx(t_data *data);
+void   *init_mlx(t_data *data);
 
 int		get_default_zoom(t_data *data);
 /*draw*/
@@ -49,7 +50,7 @@ void	draw_line(t_data data, t_pos a, t_pos b);
 /*convert*/
 void	transform_pos(t_data *data, t_pos *pos);
 /*utils*/
-t_pos	*ft_newpos(int x, int y, int z);
+t_pos  *ft_newpos(int x, int y, int z);
 
 void	show_inputs(t_data data);
 
@@ -61,7 +62,7 @@ int		key_hook(int keycode, t_data *data);
 /*handler utils*/
 void	reset_img(t_data *data);
 
-void	*redraw_img(t_data *data);
+void   *redraw_img(t_data *data);
 /*debug*/
 void	show_map(t_map *map);
 

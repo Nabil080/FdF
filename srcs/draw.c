@@ -12,10 +12,10 @@
 
 #include "fdf.h"
 
-static int	get_color(t_data data, int z)
+static int get_color(t_data data, int z)
 {
-	int	threshold;
-	int	gradient[10];
+	int threshold;
+	int gradient[10];
 
 	threshold = (data.map->highest - data.map->lowest) / 10 + 1;
 	get_gradient(data, gradient);
@@ -40,26 +40,24 @@ static int	get_color(t_data data, int z)
 	return (gradient[0]);
 }
 
-void	put_pixel(t_data data, t_pos pos)
+void put_pixel(t_data data, t_pos pos)
 {
-	char	*pixel;
-	int		offset;
+	char *pixel;
+	int	  offset;
 
-	if (pos.x > data.width - 1
-		|| pos.y > data.height - 1)
-		return ;
+	if (pos.x > data.width - 1 || pos.y > data.height - 1)
+		return;
 	if (pos.x < 0 || pos.y < 0)
-		return ;
-	offset = (pos.y * data.img->line_length + pos.x
-			* (data.img->bits_per_pixel / 8));
+		return;
+	offset = (pos.y * data.img->line_length + pos.x * (data.img->bits_per_pixel / 8));
 	pixel = data.img->addr + offset;
 	*(unsigned int *)pixel = get_color(data, pos.old_z);
 }
 
-void	transform_points(t_data *data)
+void transform_points(t_data *data)
 {
-	int		x;
-	int		y;
+	int x;
+	int y;
 
 	y = 0;
 	while (y < data->map->height)
@@ -74,11 +72,11 @@ void	transform_points(t_data *data)
 	}
 }
 
-void	draw_lines(t_data data)
+void draw_lines(t_data data)
 {
-	int		x;
-	int		y;
-	t_pos	***pos;
+	int		 x;
+	int		 y;
+	t_pos ***pos;
 
 	y = 0;
 	pos = data.map->pos;

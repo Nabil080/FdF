@@ -12,9 +12,9 @@
 
 #include "fdf.h"
 
-t_data	*init_data(t_map *map)
+t_data *init_data(t_map *map)
 {
-	t_data	*data;
+	t_data *data;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
@@ -41,7 +41,7 @@ t_data	*init_data(t_map *map)
 	return (data);
 }
 
-void	*init_mlx(t_data *data)
+void *init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
@@ -52,20 +52,17 @@ void	*init_mlx(t_data *data)
 	data->win = mlx_new_window(data->mlx, data->width, data->height, TITLE);
 	if (!data->win)
 		return (NULL);
-	data->img->addr = mlx_get_data_addr(data->img->img,
-			&data->img->bits_per_pixel,
-			&data->img->line_length,
-			&data->img->endian);
+	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
 	if (!data->img->addr)
 		return (NULL);
 	return (data);
 }
 
-int	get_default_zoom(t_data *data)
+int get_default_zoom(t_data *data)
 {
-	int	zoom;
-	int	highest;
-	int	lowest;
+	int zoom;
+	int highest;
+	int lowest;
 
 	highest = data->map->highest;
 	lowest = data->map->lowest;

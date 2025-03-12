@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	exit_args(void)
+void exit_args(void)
 {
 	ft_putendl_fd("Please give a valid .fdf file as argument", 2);
 	ft_putendl_fd("Correct format:./fdf <model>", 2);
@@ -20,23 +20,23 @@ void	exit_args(void)
 	exit(EXIT_FAILURE);
 }
 
-void	exit_error(char *str)
+void exit_error(char *str)
 {
 	ft_putendl_fd(str, 2);
 	exit(EXIT_FAILURE);
 }
 
-void	exit_success(t_data *data)
+void exit_success(t_data *data)
 {
 	free_map(data->map);
 	free_data(data);
 	exit(EXIT_SUCCESS);
 }
 
-void	free_data(t_data *data)
+void free_data(t_data *data)
 {
 	if (!data)
-		return ;
+		return;
 	if (!data->mlx)
 		return (free(data));
 	if (data->win)
@@ -52,17 +52,17 @@ void	free_data(t_data *data)
 	free(data);
 }
 
-void	free_map(t_map *map)
+void free_map(t_map *map)
 {
-	int	x;
-	int	y;
+	int x;
+	int y;
 
 	if (map->tab)
 		free_2d((void **)map->tab, map->height);
 	if (!map->pos)
 	{
 		free(map);
-		return ;
+		return;
 	}
 	y = 0;
 	while (y < map->height)
