@@ -6,14 +6,11 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-LINKFLAGS = -lm -lmlx -lXext -lX11 -L minilibx
+LINKFLAGS = -lm -lmlx -lXext -lX11 -L minilibx -L libft -lft
 
-CPPFLAGS = -I minilibx
+CPPFLAGS = -I minilibx -I libft -I libft/includes
 
-LIBS = libft \
-
-INCLUDES =	includes \
-			${foreach lib, ${LIBS}, ${lib} ${lib}/includes}
+INCLUDES =	includes
 
 ######################## SOURCES ########################
 
@@ -60,20 +57,23 @@ norm :
 
 ######################## COMPILATION ########################
 
-${NAME} : ${OBJS_DIR} ${OBJS}
-	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
-	${CC} ${FLAGS} ${OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o $@ ${LINKFLAGS}
+${NAME} : SUB_MODULE ${OBJS_DIR} ${OBJS}
+	${MAKE} -C minilibx
+	${MAKE} -C libft
+	${CC} ${FLAGS} ${OBJS} -o $@ ${LINKFLAGS}
 
 debug : ${OBJS_DIR} ${OBJS}
 	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
-	${CC} ${FLAGS} -g3 -fsanitize=address ${OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o ${NAME} ${LINKFLAGS}
+	${CC} ${FLAGS} -g3 -fsanitize=address ${OBJS} -o ${NAME} ${LINKFLAGS}
 
 ${OBJS_DIR} :
 	mkdir $@
 
 ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
 	${CC} ${FLAGS} ${CPPFLAGS} ${foreach include, ${INCLUDES},-I ${include}} -c $< -o $@
-	
+
+SUB_MODULE :
+	git submodule update --init
 ######################## TEST ########################
 
 test : square
