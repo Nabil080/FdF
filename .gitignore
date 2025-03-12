@@ -1,10 +1,5 @@
-.vscode
+.*
 *.out
 *.a
 *.o
-objs
 fdf
-fdf_linux
-minilibx
-test_maps
-*.fdf
