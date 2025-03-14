@@ -26,7 +26,7 @@ This project also integrates **submodules** for both the **MiniLibX** and **libf
 Clone the repository and build the project:
 
 ```sh
-git clone [<repository-url>](https://github.com/Nabil080/fdf)
+git clone https://github.com/Nabil080/fdf
 cd fdf
 make
 ```
