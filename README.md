@@ -4,6 +4,7 @@
 
 <img width="800" height="608" alt="tom" src="https://github.com/user-attachments/assets/1a8a4651-38bb-42a9-abcc-75146d4d8d2a" />
 
+Check this [demo video](https://youtu.be/nquhK0EK0Cs) to see it in action.
 
 This project also integrates **submodules** for both the **MiniLibX** and **libft** libraries, which are automatically pulled and compiled via the Makefile.
 
