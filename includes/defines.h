@@ -128,7 +128,7 @@ typedef struct s_img
 		int	  endian;
 } t_img;
 
-typedef struct t_data
+typedef struct s_data
 {
 		t_map *map;
 		void  *mlx;
@@ -145,6 +145,9 @@ typedef struct t_data
 		int	   projection;
 		int	   inputs;
 		int	   gradient;
+		int	   center_z;
+		int	   center_y;
+		int	   center_x;
 } t_data;
 
 typedef struct s_bresenham

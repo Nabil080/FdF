@@ -1,4 +1,3 @@
-/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   handler.c                                          :+:      :+:    :+:   */
@@ -86,13 +85,14 @@ static void manage_projection(int keycode, t_data *data)
 	if (keycode == TOP_VIEW || keycode == FRONT_VIEW || keycode == SIDE_VIEW)
 	{
 		data->projection = ORTHO;
+		data->x = 0;
 		data->y = 0;
 		data->alpha = 0;
 		data->tetha = 0;
 		data->gamma = 0;
 	}
 	if (keycode == FRONT_VIEW || keycode == SIDE_VIEW)
-		data->y = data->zoom * data->map->highest + data->zoom * data->map->height;
+		data->y = data->zoom * (data->center_y + data->center_z);
 	if (keycode == FRONT_VIEW)
 		data->alpha = 1.60;
 	if (keycode == SIDE_VIEW)

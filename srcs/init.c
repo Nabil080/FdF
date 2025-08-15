@@ -12,6 +12,19 @@
 
 #include "fdf.h"
 
+void get_center(t_data *data)
+{
+	data->center_x = (data->map->width - 1) / 2.0;
+	data->center_y = (data->map->height - 1) / 2.0;
+
+	int sum_z = 0;
+	for (int y = 0; y < data->map->height; y++)
+		for (int x = 0; x < data->map->width; x++)
+			sum_z += data->map->tab[y][x];
+
+	data->center_z = sum_z / (double)(data->map->width * data->map->height);
+}
+
 t_data *init_data(t_map *map)
 {
 	t_data *data;
@@ -38,6 +51,7 @@ t_data *init_data(t_map *map)
 	data->tetha = 0;
 	data->x = 0;
 	data->zoom = get_default_zoom(data);
+	get_center(data);
 	return (data);
 }
 
@@ -52,7 +66,8 @@ void *init_mlx(t_data *data)
 	data->win = mlx_new_window(data->mlx, data->width, data->height, TITLE);
 	if (!data->win)
 		return (NULL);
-	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
+	data->img->addr =
+		mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
 	if (!data->img->addr)
 		return (NULL);
 	return (data);

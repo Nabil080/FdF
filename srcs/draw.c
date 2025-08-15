@@ -18,6 +18,7 @@ static int get_color(t_data data, int z)
 	int gradient[10];
 
 	threshold = (data.map->highest - data.map->lowest) / 10 + 1;
+	printf("z:%d\n", z);
 	get_gradient(data, gradient);
 	if (z >= data.map->highest)
 		return (gradient[9]);

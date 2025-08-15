@@ -79,19 +79,19 @@ SUB_MODULE :
 test : square
 
 42 : all
-	./${NAME} 42.fdf
+	./${NAME} maps/42.fdf
 
 square : all
-	./${NAME} square.fdf
+	./${NAME} maps/square.fdf
 
 long : all
-	./${NAME} long.fdf
+	./${NAME} maps/long.fdf
 
 error : all
-	./${NAME} invalid.fdf
+	./${NAME} maps/invalid.fdf
 
 pylone : all
-	./${NAME} test_maps/pylone.fdf
+	./${NAME} maps/pylone.fdf
 
 pyramide : all
-	./${NAME} test_maps/pyramide.fdf
+	./${NAME} maps/pyramide.fdf

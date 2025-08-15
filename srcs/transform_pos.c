@@ -28,13 +28,13 @@ static void zoom(t_data data, t_pos *pos)
 	pos->z *= data.zoom;
 }
 
-static void translate(t_data data, t_pos *pos)
-{
-	if (data.projection == ISO)
-		pos->x += (data.width / 2);
-	pos->x += data.x;
-	pos->y += data.y;
-}
+// static void translate(t_data data, t_pos *pos)
+// {
+// 	if (data.projection == ISO)
+// 		pos->x += (data.width / 2);
+// 	pos->x += data.x;
+// 	pos->y += data.y;
+// }
 
 static void rotate_xyz(t_data *data, t_pos *pos)
 {
@@ -54,14 +54,22 @@ static void rotate_xyz(t_data *data, t_pos *pos)
 
 void transform_pos(t_data *data, t_pos *pos)
 {
+	// 1. Zoom in object space
 	zoom(*data, pos);
-	pos->x += (data->width / 2);
-	pos->y += (data->height / 2);
-	pos->x -= ((data->map->width - 1) * data->zoom) / 2;
-	pos->y -= ((data->map->height - 1) * data->zoom) / 2;
+
+	// 2. Translate so the center is at (0,0,0)
+	pos->x -= data->center_x * data->zoom;
+	pos->y -= data->center_y * data->zoom;
+	pos->z -= data->center_z * data->zoom;
+
+	// 3. Rotate around origin
+	rotate_xyz(data, pos);
+
+	// 4. Apply projection
 	if (data->projection == ISO)
 		iso(pos);
-	rotate_xyz(data, pos);
-	translate(*data, pos);
-	return;
+
+	// 5. Translate to screen
+	pos->x += data->width / 2 + data->x;
+	pos->y += data->height / 2 + data->y;
 }
