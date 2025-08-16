@@ -4,7 +4,7 @@
 
 <img width="800" height="608" alt="tom" src="https://github.com/user-attachments/assets/1a8a4651-38bb-42a9-abcc-75146d4d8d2a" />
 
-Check this [demo video](https://youtu.be/nquhK0EK0Cs) to see it in action.
+> **Note**: Check out the [screenshots](#screenshots) below or this [demo video](https://youtu.be/oSNFE0wsfEY) to see it in action.
 
 This project also integrates **submodules** for both the **MiniLibX** and **libft** libraries, which are automatically pulled and compiled via the Makefile.
 
@@ -85,3 +85,30 @@ To completely remove all binaries and object files:
 ```sh
 make fclean
 ```
+
+## Screenshots
+
+<div style="text-align: center;">
+  <p>Screenshots showcasing some maps/rotations/colors. See the <a target="_blank" href="https://youtu.be/oSNFE0wsfEY">demo video</a> for dynamic interactions.</p>
+</div>
+
+<div style="text-align: center;">
+  <img src="https://github.com/user-attachments/assets/4018bc8d-de0e-4469-a60f-84efae48915b" alt="Pyramide" width="600">
+  <p><em>Pyramide</em></p>
+</div>
+
+<div style="text-align: center;">
+  <img src="https://github.com/user-attachments/assets/85a36ffe-c418-4d8a-9e1e-26473de9c3a7" alt="Pylone" width="600">
+  <p><em>Pylone</em></p>
+</div>
+
+<div style="text-align: center;">
+  <img src="https://github.com/user-attachments/assets/eb795445-e160-49fd-b7b1-5c29ea2c8ae1" alt="Pylone Rotated Color" width="600">
+  <p><em>Pylone (Rotated + color changed)</em></p>
+</div>
+
+<div style="text-align: center;">
+  <img src="https://github.com/user-attachments/assets/217b22ed-90c2-499b-a8e6-fdc974e2d426" alt="Julia Fractol Top View" width="600">
+  <p><em>Julia fractol (Top view + color change)</em></p>
+</div>
+
